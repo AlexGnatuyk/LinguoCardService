@@ -9,43 +9,28 @@ namespace LinguoCardService.Services.Repositories
 {
     public class WordDictionaryRepository : IWordDictionaryRepository
     {
-        public WordDictionary GetById()
+        public WordDictionary GetById(int id)
         {
-            var connectionString = @"Data Source=.\sqlexpress;Initial Catalog=LinguoCards;Persist Security Info=True;User ID=sa;Password=MsSql2008";
-
-            SqlConnection connection = new SqlConnection(connectionString);
-            try
-            {
-                // Открываем подключение
-                connection.Open();
-                Console.WriteLine("Подключение открыто");
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            var connectionString =
+                @"Data Source=.\sqlexpress;Initial Catalog=LinguoCards;Persist Security Info=True;User ID=sa;Password=MsSql2008";
 
 
             DataContext db = new DataContext(connectionString);
 
             // Получаем таблицу пользователей
-            Table<WordDictionary> users = db.GetTable<WordDictionary>();
+
             var query = from u in db.GetTable<WordDictionary>()
-                where u.Id == 1
+                where u.Id == id
                 select u;
-            foreach (var VARIABLE in query)
-            {
-                return VARIABLE;
-            }
-            throw new ArgumentException();
+            return query.FirstOrDefault();
         }
 
-        public WordDictionary GetByOriginallWord()
+        public WordDictionary GetByOriginallWord(string original)
         {
             throw new System.NotImplementedException();
         }
 
-        public WordDictionary GetByTranslateWord()
+        public WordDictionary GetByTranslateWord(string translate)
         {
             throw new System.NotImplementedException();
         }

@@ -1,12 +1,7 @@
-﻿using NUnit.Framework;
-using LinguoCardService.Services.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LinguoCardService.Repositories;
+using NUnit.Framework;
 
-namespace LinguoCardService.Services.Repositories.Tests
+namespace LinguoCardService.ServicesTests.Repositories
 {
     [TestFixture()]
     public class WordDictionaryRepositoryTests
@@ -15,8 +10,10 @@ namespace LinguoCardService.Services.Repositories.Tests
         public void GetByIdTest()
         {
             var repository = new WordDictionaryRepository();
-            var result = repository.GetById();
-            Assert.Fail();
+            var id = 20;
+
+            var result = repository.GetById(id);
+            Assert.IsTrue(true);
         }
     }
 }

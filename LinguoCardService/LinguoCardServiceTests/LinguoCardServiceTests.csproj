@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C5E59027-2A44-4C57-B028-3CDE352F6377}</ProjectGuid>
+    <ProjectGuid>{C62B26B2-B12B-4E10-86EF-4B955E32732D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LinguoCardService.ServicesTests</RootNamespace>
-    <AssemblyName>LinguoCardService.ServicesTests</AssemblyName>
+    <RootNamespace>LinguoCardServiceTests</RootNamespace>
+    <AssemblyName>LinguoCardServiceTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -61,8 +61,12 @@
       <Project>{57DA1106-8A8C-4765-A662-EF6752C3AE8E}</Project>
       <Name>LinguoCardService.DataContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LinguoCardService.Domain.Abstractions\LinguoCardService.Domain.Abstractions.csproj">
+      <Project>{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}</Project>
+      <Name>LinguoCardService.Domain.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LinguoCardService\LinguoCardService.csproj">
-      <Project>{82d12696-ca30-4624-aa91-bd4f1bafc386}</Project>
+      <Project>{82D12696-CA30-4624-AA91-BD4F1BAFC386}</Project>
       <Name>LinguoCardService</Name>
     </ProjectReference>
   </ItemGroup>

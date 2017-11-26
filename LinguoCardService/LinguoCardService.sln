@@ -9,11 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.Domain.Ab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.DataContracts", "LinguoCardService.DataContracts\LinguoCardService.DataContracts.csproj", "{57DA1106-8A8C-4765-A662-EF6752C3AE8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.Services", "LinguoCardService.Services\LinguoCardService.Services.csproj", "{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.ServicesTests", "LinguoCardService.ServicesTests\LinguoCardService.ServicesTests.csproj", "{C5E59027-2A44-4C57-B028-3CDE352F6377}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2C3F95A7-EF6E-4C44-8B69-349921E2C0E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardServiceTests", "LinguoCardServiceTests\LinguoCardServiceTests.csproj", "{C62B26B2-B12B-4E10-86EF-4B955E32732D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,20 +31,16 @@ Global
 		{57DA1106-8A8C-4765-A662-EF6752C3AE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57DA1106-8A8C-4765-A662-EF6752C3AE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57DA1106-8A8C-4765-A662-EF6752C3AE8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5E59027-2A44-4C57-B028-3CDE352F6377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5E59027-2A44-4C57-B028-3CDE352F6377}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5E59027-2A44-4C57-B028-3CDE352F6377}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5E59027-2A44-4C57-B028-3CDE352F6377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C62B26B2-B12B-4E10-86EF-4B955E32732D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C62B26B2-B12B-4E10-86EF-4B955E32732D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C62B26B2-B12B-4E10-86EF-4B955E32732D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C62B26B2-B12B-4E10-86EF-4B955E32732D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C5E59027-2A44-4C57-B028-3CDE352F6377} = {2C3F95A7-EF6E-4C44-8B69-349921E2C0E6}
+		{C62B26B2-B12B-4E10-86EF-4B955E32732D} = {2C3F95A7-EF6E-4C44-8B69-349921E2C0E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {036E3CB0-7692-4996-9578-1726E3560D19}
