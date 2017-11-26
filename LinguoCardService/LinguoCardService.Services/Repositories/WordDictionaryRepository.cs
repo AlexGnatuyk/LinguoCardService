@@ -11,7 +11,7 @@ namespace LinguoCardService.Services.Repositories
     {
         public WordDictionary GetById()
         {
-            var connectionString = @"Data Source=(localhost);Initial Catalog=LinguoCards;Integrated Security=True";
+            var connectionString = @"Data Source=.\sqlexpress;Initial Catalog=LinguoCards;Persist Security Info=True;User ID=sa;Password=MsSql2008";
 
             SqlConnection connection = new SqlConnection(connectionString);
             try

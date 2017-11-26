@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService", "LinguoCardService\LinguoCardService.csproj", "{82D12696-CA30-4624-AA91-BD4F1BAFC386}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.Services", "LinguoCardService.Services\LinguoCardService.Services.csproj", "{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.ServicesTests", "LinguoCardService.ServicesTests\LinguoCardService.ServicesTests.csproj", "{C5E59027-2A44-4C57-B028-3CDE352F6377}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2C3F95A7-EF6E-4C44-8B69-349921E2C0E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5E59027-2A44-4C57-B028-3CDE352F6377} = {2C3F95A7-EF6E-4C44-8B69-349921E2C0E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {036E3CB0-7692-4996-9578-1726E3560D19}
