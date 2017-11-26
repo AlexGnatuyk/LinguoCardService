@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService", "LinguoCardService\LinguoCardService.csproj", "{82D12696-CA30-4624-AA91-BD4F1BAFC386}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.Domain.Abstractions", "LinguoCardService.Domain.Abstractions\LinguoCardService.Domain.Abstractions.csproj", "{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.DataContracts", "LinguoCardService.DataContracts\LinguoCardService.DataContracts.csproj", "{57DA1106-8A8C-4765-A662-EF6752C3AE8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.Services", "LinguoCardService.Services\LinguoCardService.Services.csproj", "{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.ServicesTests", "LinguoCardService.ServicesTests\LinguoCardService.ServicesTests.csproj", "{C5E59027-2A44-4C57-B028-3CDE352F6377}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{82D12696-CA30-4624-AA91-BD4F1BAFC386}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82D12696-CA30-4624-AA91-BD4F1BAFC386}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82D12696-CA30-4624-AA91-BD4F1BAFC386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57DA1106-8A8C-4765-A662-EF6752C3AE8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57DA1106-8A8C-4765-A662-EF6752C3AE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57DA1106-8A8C-4765-A662-EF6752C3AE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57DA1106-8A8C-4765-A662-EF6752C3AE8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74881315-BDE4-4BFE-BEF2-CFAD7C0C6946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5E59027-2A44-4C57-B028-3CDE352F6377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5E59027-2A44-4C57-B028-3CDE352F6377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5E59027-2A44-4C57-B028-3CDE352F6377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5E59027-2A44-4C57-B028-3CDE352F6377}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
