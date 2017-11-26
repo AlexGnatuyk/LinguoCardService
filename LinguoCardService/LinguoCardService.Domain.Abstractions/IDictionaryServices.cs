@@ -2,7 +2,7 @@
 
 namespace LinguoCardService.Domain.Abstractions
 {
-    public interface IWordDictionaryRepository
+    public interface IDictionaryServices
     {
         WordDictionary GetById(int id);
         WordDictionary GetByOriginallWord(string original);

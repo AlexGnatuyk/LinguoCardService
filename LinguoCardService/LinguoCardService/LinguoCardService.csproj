@@ -120,6 +120,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\WordDictionaryRepository.cs" />
+    <Compile Include="Services\DictionaryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

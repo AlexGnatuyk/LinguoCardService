@@ -20,6 +20,7 @@ namespace LinguoCardService
             var builder = new ContainerBuilder();
 
             builder.RegisterHttpServices();
+            builder.RegisterDomainServices();
             
             return builder.Build();
         }

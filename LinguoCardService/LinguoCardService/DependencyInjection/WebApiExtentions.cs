@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Web;
 using Autofac;
 using Autofac.Integration.WebApi;
+using LinguoCardService.Domain.Abstractions;
+using LinguoCardService.Repositories;
 
 namespace LinguoCardService.DependencyInjection
 {
@@ -14,6 +16,13 @@ namespace LinguoCardService.DependencyInjection
         {
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             
+            return builder;
+        }
+
+        public static ContainerBuilder RegisterDomainServices(this ContainerBuilder builder)
+        {
+            builder.RegisterType<WordDictionaryRepository>().As<IWordDictionaryRepository>();
+
             return builder;
         }
     }

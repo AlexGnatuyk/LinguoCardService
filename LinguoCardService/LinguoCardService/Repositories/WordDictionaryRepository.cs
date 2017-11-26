@@ -43,5 +43,10 @@ namespace LinguoCardService.Repositories
                 select u;
             return query.FirstOrDefault();
         }
+
+        public void SetWord(string original, string translate)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
