@@ -12,8 +12,6 @@ namespace LinguoCardService.Repositories
         {
             DataContext db = new DataContext(connectionString);
 
-            // Получаем таблицу пользователей
-
             var query = from u in db.GetTable<WordDictionary>()
                 where u.Id == id
                 select u;

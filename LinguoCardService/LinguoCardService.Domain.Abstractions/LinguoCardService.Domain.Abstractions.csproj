@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICardRepository.cs" />
-    <Compile Include="IDictionaryServices.cs" />
+    <Compile Include="IDictionaryService.cs" />
     <Compile Include="IWordDictionaryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

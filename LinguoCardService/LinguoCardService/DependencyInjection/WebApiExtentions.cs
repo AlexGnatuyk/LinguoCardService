@@ -7,6 +7,7 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using LinguoCardService.Domain.Abstractions;
 using LinguoCardService.Repositories;
+using LinguoCardService.Services;
 
 namespace LinguoCardService.DependencyInjection
 {
@@ -22,6 +23,7 @@ namespace LinguoCardService.DependencyInjection
         public static ContainerBuilder RegisterDomainServices(this ContainerBuilder builder)
         {
             builder.RegisterType<WordDictionaryRepository>().As<IWordDictionaryRepository>();
+            builder.RegisterType<DictionaryService>().As<IDictionaryService>();
 
             return builder;
         }

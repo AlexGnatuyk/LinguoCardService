@@ -8,6 +8,10 @@ namespace LinguoCardService
 {
     public static class WebApiConfig
     {
+        /// <summary>
+        /// Route Prefix
+        /// </summary>
+        public const string RoutePrefix = "api";
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services

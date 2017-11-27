@@ -8,10 +8,10 @@ using LinguoCardService.Repositories;
 
 namespace LinguoCardService.Services
 {
-    public class DictionaryService : IDictionaryServices
+    public class DictionaryService : IDictionaryService
     {
-        private readonly WordDictionaryRepository _repository;
-        public DictionaryService(WordDictionaryRepository repository)
+        private readonly IWordDictionaryRepository _repository;
+        public DictionaryService(IWordDictionaryRepository repository)
         {
             this._repository = repository ??
                               throw new ArgumentNullException(nameof(WordDictionaryRepository));
