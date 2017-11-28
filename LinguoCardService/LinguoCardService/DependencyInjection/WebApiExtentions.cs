@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Web;
+﻿using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
 using LinguoCardService.Domain.Abstractions;
 using LinguoCardService.Repositories;
-using LinguoCardService.Services;
+using LinguoCardService.Services.Services;
+
 
 namespace LinguoCardService.DependencyInjection
 {

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0BC3E93E-9846-4DB6-936D-1737F58C676B}</ProjectGuid>
+    <ProjectGuid>{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LinguoCardService.Services</RootNamespace>
-    <AssemblyName>LinguoCardService.Services</AssemblyName>
+    <RootNamespace>LinguoCardService.Repositories</RootNamespace>
+    <AssemblyName>LinguoCardService.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DictionaryService.cs" />
+    <Compile Include="WordDictionaryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LinguoCardService.DataContracts\LinguoCardService.DataContracts.csproj">
@@ -49,12 +51,8 @@
       <Name>LinguoCardService.DataContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\LinguoCardService.Domain.Abstractions\LinguoCardService.Domain.Abstractions.csproj">
-      <Project>{3d0400c1-2e09-4f28-80b3-dfc2c42d7ed7}</Project>
+      <Project>{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}</Project>
       <Name>LinguoCardService.Domain.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LinguoCardService.Repositories\LinguoCardService.Repositories.csproj">
-      <Project>{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}</Project>
-      <Name>LinguoCardService.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

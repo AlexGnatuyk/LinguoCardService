@@ -1,14 +1,9 @@
-﻿using NUnit.Framework;
-using LinguoCardService.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LinguoCardService.DataContracts;
+﻿using LinguoCardService.DataContracts;
 using LinguoCardService.Repositories;
+using LinguoCardService.Services.Services;
+using NUnit.Framework;
 
-namespace LinguoCardService.Services.Tests
+namespace LinguoCardServiceTests.Services
 {
     [TestFixture()]
     public class DictionaryServiceTests

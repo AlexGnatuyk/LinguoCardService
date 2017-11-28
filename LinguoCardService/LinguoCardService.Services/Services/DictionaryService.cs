@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using LinguoCardService.DataContracts;
 using LinguoCardService.Domain.Abstractions;
 using LinguoCardService.Repositories;
 
-namespace LinguoCardService.Services
+namespace LinguoCardService.Services.Services
 {
     public class DictionaryService : IDictionaryService
     {

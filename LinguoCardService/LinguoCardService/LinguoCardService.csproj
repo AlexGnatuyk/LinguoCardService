@@ -120,8 +120,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\WordDictionaryRepository.cs" />
-    <Compile Include="Services\DictionaryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -144,6 +142,14 @@
     <ProjectReference Include="..\LinguoCardService.Domain.Abstractions\LinguoCardService.Domain.Abstractions.csproj">
       <Project>{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}</Project>
       <Name>LinguoCardService.Domain.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinguoCardService.Repositories\LinguoCardService.Repositories.csproj">
+      <Project>{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}</Project>
+      <Name>LinguoCardService.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinguoCardService.Services\LinguoCardService.Services.csproj">
+      <Project>{0BC3E93E-9846-4DB6-936D-1737F58C676B}</Project>
+      <Name>LinguoCardService.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,13 +1,8 @@
-﻿using NUnit.Framework;
+﻿using LinguoCardService.DataContracts;
 using LinguoCardService.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LinguoCardService.DataContracts;
+using NUnit.Framework;
 
-namespace LinguoCardService.Repositories.Tests
+namespace LinguoCardServiceTests.Repositories
 {
     [TestFixture()]
     public class WordDictionaryRepositoryTests
