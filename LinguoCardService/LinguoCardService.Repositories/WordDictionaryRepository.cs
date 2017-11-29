@@ -12,20 +12,21 @@ namespace LinguoCardService.Repositories
     {
         readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         
-        public WordDictionary GetById(int id)
+        public WordDictionary GetById(int id, string language)
         {
             var responseObject = new WordDictionary();
             string request = null;
 
-            if (id % 2 == 0)
+            if (language=="ru")
             {
                 request =
                     $"select t1.value as Russian, Words.value as English from Words,(select Dictionary.id as id, Words.value as value, Dictionary.english_id as englishID from Words, Dictionary where Words.id = '{id}' and Dictionary.russian_id = Words.id) t1 where Words.id=t1.englishID;";
             }
-            else
+            if(language=="eng")
             {
                 request = $"select t1.value as English, Words.value as Russian from Words,(select Dictionary.id as id, Words.value as value, Dictionary.russian_id as russianID from Words, Dictionary where Words.id = '{id}' and Dictionary.english_id = Words.id) t1 where Words.id=t1.russianID;";
             }
+            if(request == null) throw new ArgumentException(nameof(request));
             
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -89,9 +90,74 @@ namespace LinguoCardService.Repositories
             return responseObject;
         }
 
-        public void SetWord(string original, string translate)
+        public WordDictionary SetWord(string original, string translate)
         {
-            throw new System.NotImplementedException();
+            var requestEngInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES ('{original}', 'eng')";
+            var requestEngGet = $"select Words.id  as id from Words where Words.value='{original}';";
+            var requestRusInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES ('{translate}', 'ru')";
+            var requestRusGet = $"select Words.id  as id from Words where Words.value='{translate}';";
+            var responseObject = new WordDictionary();
+
+            int engId = 0;
+            int rusId = 0;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(requestEngInsert, connection);
+                var flag = command.ExecuteNonQuery();
+                if(flag == 0) throw new ArgumentException();
+               
+
+                command = new SqlCommand(requestEngGet,connection);
+                var response = command.ExecuteReader();
+                if (response.HasRows)
+                {
+                    while (response.Read())
+                    {
+                        engId = (int) response["id"];
+                    }
+                }
+                response.Close();
+
+                command = new SqlCommand(requestRusInsert,connection);
+                flag = command.ExecuteNonQuery();
+                if(flag == 0) throw  new ArgumentException();
+
+                command = new SqlCommand(requestRusGet, connection);
+                response = command.ExecuteReader();
+                if (response.HasRows)
+                {
+                    while (response.Read())
+                    {
+                        rusId = (int)response["id"];
+                    }
+                }
+                response.Close();
+
+                if (engId ==0 || rusId ==0) throw new ArgumentException();
+                var requestDictionaryInsert = $"INSERT INTO [dbo].[Dictionary] ([english_id],[russian_id]) VALUES ({engId}, {rusId})";
+                command = new SqlCommand(requestDictionaryInsert,connection);
+                flag = command.ExecuteNonQuery();
+                if (flag == 0) throw new ArgumentException();
+
+                var requestDictionaryId = $"select Dictionary.id from Dictionary where Dictionary.english_id='{engId}'";
+                command = new SqlCommand(requestDictionaryId, connection);
+                response = command.ExecuteReader();
+                if (response.HasRows)
+                {
+                    while (response.Read())
+                    {
+                        responseObject.Id = (int)response["id"];
+                    }
+                }
+                response.Close();
+
+                responseObject.Original = original;
+                responseObject.Translate = translate;
+
+            }
+            return responseObject;
         }
     }
 }

@@ -14,9 +14,9 @@ namespace LinguoCardService.Services.Services
                               throw new ArgumentNullException(nameof(WordDictionaryRepository));
         }
 
-        public WordDictionary GetById(int id)
+        public WordDictionary GetById(int id, string language)
         {
-            var requestResult = _repository.GetById(id);
+            var requestResult = _repository.GetById(id, language);
 
             return requestResult;
         }
@@ -33,9 +33,10 @@ namespace LinguoCardService.Services.Services
             return requestResult;
         }
 
-        public void SetWord(string original, string translate)
+        public WordDictionary SetWord(string original, string translate)
         {
-            throw new NotImplementedException();
+            var requestResult= _repository.SetWord(original,translate);
+            return requestResult;
         }
     }
 }

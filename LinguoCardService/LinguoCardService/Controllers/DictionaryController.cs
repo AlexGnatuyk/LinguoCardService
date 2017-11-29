@@ -28,24 +28,25 @@ namespace LinguoCardService.Controllers
                 ?? throw new ArgumentNullException(nameof(dictionaryServices));
         }
 
-        
+
         /// <summary>
         /// Gets a given dictionary
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Id of word</param>
+        /// <param name="language">eng, ru</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Dictionary/{id}")]
+        [Route("Dictionary/{id}-{language}")]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
             Description = "Translate word by id")]
-        public IHttpActionResult GetTranslateById(int id)
+        public IHttpActionResult GetTranslateById(int id, string language)
         {
-            var result = _dictionaryService.GetById(id);
+            var result = _dictionaryService.GetById(id, language);
             return Content(HttpStatusCode.OK, result);
         }
 
         /// <summary>
-        /// Get a tranlate in English by Russian word
+        /// Get a translate in English by Russian word
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
@@ -59,7 +60,7 @@ namespace LinguoCardService.Controllers
             return Content(HttpStatusCode.OK, result);
         }
         /// <summary>
-        /// Get a tranlate in Russian by English word
+        /// Get a translate in Russian by English word
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
@@ -70,6 +71,22 @@ namespace LinguoCardService.Controllers
         public IHttpActionResult GetTranslateByEnglishWord(string word)
         {
             var result = _dictionaryService.GetByOriginallWord(word);
+            return Content(HttpStatusCode.OK, result);
+        }
+
+        /// <summary>
+        /// Add you own word and translation in dictionary
+        /// </summary>
+        /// <param name="original"></param>
+        /// <param name="translate"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Dictionaty/AddWord/{original}-{translate}")]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
+            Description = "Word was added in dictionary")]
+        public IHttpActionResult AddWordsInDictionary(string original, string translate)
+        {
+            var result = _dictionaryService.SetWord(original, translate);
             return Content(HttpStatusCode.OK, result);
         }
 
