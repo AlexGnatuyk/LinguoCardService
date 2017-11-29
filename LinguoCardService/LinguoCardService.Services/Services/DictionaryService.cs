@@ -44,5 +44,11 @@ namespace LinguoCardService.Services.Services
             var resultRequest = _repository.UpdateWord(id, newWord);
             return resultRequest;
         }
+
+        public bool DeleteWord(int id)
+        {
+            var resultRequest = _repository.DeleteWord(id);
+            return resultRequest;
+        }
     }
 }

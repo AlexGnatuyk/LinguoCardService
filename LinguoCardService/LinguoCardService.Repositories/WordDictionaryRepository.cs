@@ -28,7 +28,7 @@ namespace LinguoCardService.Repositories
             {
                 request = $"select t1.value as English, Words.value as Russian from Words,(select Dictionary.id as id, Words.value as value, Dictionary.russian_id as russianID from Words, Dictionary where Words.id = '{id}' and Dictionary.english_id = Words.id) t1 where Words.id=t1.russianID;";
             }
-            if(language == null) throw new ArgumentException(nameof(request));
+            
             
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -177,9 +177,78 @@ namespace LinguoCardService.Repositories
             return repo.GetById(id);
         }
 
-        public void DeleteWord(int id)
+        public bool DeleteWord(int id)
         {
-            throw new NotImplementedException();
+            var language = CheckRuOrEngWord(id);
+            int engId = 0;
+            int ruID = 0;
+
+            if (language == "ru")
+            {
+                ruID = id;
+                var request = $"select Dictionary.english_id as EnglisID from Dictionary where Dictionary.russian_id = '{id}'";
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    var commande = new SqlCommand(request, connection);
+                    var response = commande.ExecuteReader();
+                    if (response.HasRows)
+                    {
+                        while (response.Read())
+                        {
+                            engId = (int) response["EnglisID"];
+                        }
+                    }
+                    response.Close();
+
+                    if(engId == 0) throw new ArgumentException();
+
+                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{ruID}'";
+                    commande = new SqlCommand(request,connection);
+                    var flag = commande.ExecuteNonQuery();
+                    if (flag == 0) throw new ArgumentException();
+
+                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{engId}'";
+                    commande = new SqlCommand(request, connection);
+                    flag = commande.ExecuteNonQuery();
+                    if (flag == 0) throw new ArgumentException();
+                }
+                return true;
+            }
+            if (language == "eng")
+            {
+                engId = id;
+                var request =
+                    $"select Dictionary.russian_id as RussianId from Dictionary where Dictionary.english_id = '{id}'";
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    var commande = new SqlCommand(request, connection);
+                    var response = commande.ExecuteReader();
+                    if (response.HasRows)
+                    {
+                        while (response.Read())
+                        {
+                            ruID = (int) response["RussianID"];
+                        }
+                    }
+                    response.Close();
+
+                    if (ruID == 0) throw new ArgumentException();
+
+                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{ruID}'";
+                    commande = new SqlCommand(request, connection);
+                    var flag = commande.ExecuteNonQuery();
+                    if (flag == 0) throw new ArgumentException();
+
+                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{engId}'";
+                    commande = new SqlCommand(request, connection);
+                    flag = commande.ExecuteNonQuery();
+                    if (flag == 0) throw new ArgumentException();
+                }
+                return true;
+            }
+            return false;
         }
 
         public string CheckRuOrEngWord(int id)
@@ -203,6 +272,7 @@ namespace LinguoCardService.Repositories
                 }
                 response.Close();
             }
+            if (language == null) throw new ArgumentException(nameof(request));
             return language;
         }
     }

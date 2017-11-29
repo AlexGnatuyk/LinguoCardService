@@ -105,5 +105,19 @@ namespace LinguoCardService.Controllers
             return Content(HttpStatusCode.OK, result);
         }
 
+        /// <summary>
+        /// Delete Word and translation by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route("Dictionary/Delete/{id}")]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "Word and translation was successfully delete")]
+        public IHttpActionResult DeleteWordById(int id)
+        {
+            var result = _dictionaryService.DeleteWord(id);
+            return Content(HttpStatusCode.OK, result);
+        }
+
     }
 }
