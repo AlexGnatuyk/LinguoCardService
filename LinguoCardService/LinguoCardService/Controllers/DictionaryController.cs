@@ -33,15 +33,14 @@ namespace LinguoCardService.Controllers
         /// Gets a given dictionary
         /// </summary>
         /// <param name="id">Id of word</param>
-        /// <param name="language">eng, ru</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Dictionary/{id}-{language}")]
+        [Route("Dictionary/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
             Description = "Translate word by id")]
-        public IHttpActionResult GetTranslateById(int id, string language)
+        public IHttpActionResult GetTranslateById(int id)
         {
-            var result = _dictionaryService.GetById(id, language);
+            var result = _dictionaryService.GetById(id);
             return Content(HttpStatusCode.OK, result);
         }
 
@@ -87,6 +86,22 @@ namespace LinguoCardService.Controllers
         public IHttpActionResult AddWordsInDictionary(string original, string translate)
         {
             var result = _dictionaryService.SetWord(original, translate);
+            return Content(HttpStatusCode.OK, result);
+        }
+
+        /// <summary>
+        /// Update Word in dictionary
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="newWord"></param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("Dictionary/Update/{id}-{newWord}")]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
+            Description = "Word was added in dictionary")]
+        public IHttpActionResult UpdateWordInDictionary(int id, string newWord)
+        {
+            var result = _dictionaryService.UpdateWord(id, newWord);
             return Content(HttpStatusCode.OK, result);
         }
 

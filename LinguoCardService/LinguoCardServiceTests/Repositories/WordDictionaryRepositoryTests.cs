@@ -26,7 +26,7 @@ namespace LinguoCardServiceTests.Repositories
             var repository = new WordDictionaryRepository();
             var original = "Car";
 
-            var result = repository.GetByOriginallWord(original);
+            var result = repository.GetByOriginalWord(original);
 
             if(expected.Id==result.Id && expected.Original==result.Original&&expected.Translate==result.Translate) Assert.IsTrue(true);
             else
