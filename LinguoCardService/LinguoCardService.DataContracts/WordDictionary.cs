@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace LinguoCardService.DataContracts
 {
-    [Table(Name = "Dictionary")]
+   
     public class WordDictionary
     {
-        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
-        public int Id { get; set; }
-        [Column(Name = "original")]
-        public string Original { get; set; }
-        [Column(Name = "translate")]
-        public string Translate { get; set; }
+       public int Id { get; set; }
+       public string Original { get; set; }
+       public string Translate { get; set; }
     }
 }

@@ -14,30 +14,33 @@ namespace LinguoCardService.Repositories
         
         public WordDictionary GetById(int id)
         {
-            // WARNING : Wrog request/ It's just translate, but it must be a serch by id
-            var requset = "select  Words.value from Words, (select Words.id as id from Words where Words.value = 'шляпа') t1, Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
+            var responseObject = new WordDictionary();
+            string request = null;
+
+            if (id % 2 == 0)
+            {
+                request =
+                    $"select t1.value as Russian, Words.value as English from Words,(select Dictionary.id as id, Words.value as value, Dictionary.english_id as englishID from Words, Dictionary where Words.id = '{id}' and Dictionary.russian_id = Words.id) t1 where Words.id=t1.englishID;";
+            }
+            else
+            {
+                request = $"select t1.value as English, Words.value as Russian from Words,(select Dictionary.id as id, Words.value as value, Dictionary.russian_id as russianID from Words, Dictionary where Words.id = '{id}' and Dictionary.english_id = Words.id) t1 where Words.id=t1.russianID;";
+            }
+            
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand commande = new SqlCommand(requset, connection);
+                var commande = new SqlCommand(request, connection);
                 var response = commande.ExecuteReader();
-                if (response.HasRows)
+                if (!response.HasRows) return responseObject;
+                while (response.Read())
                 {
-                    while (response.Read())
-                    {
-                        object idresponse = response.GetValue(0);
-                    }
+                    responseObject.Id = id;
+                    responseObject.Original = response["English"] as string;
+                    responseObject.Translate = response["Russian"] as string;
                 }
-
             }
-
-
-            DataContext db = new DataContext(_connectionString);
-
-            var query = from u in db.GetTable<WordDictionary>()
-                where u.Id == id
-                select u;
-            return query.FirstOrDefault();
+            return responseObject;
         }
 
         public WordDictionary GetByOriginallWord(string original)
@@ -54,14 +57,25 @@ namespace LinguoCardService.Repositories
 
         public WordDictionary GetByTranslateWord(string translate)
         {
-            DataContext db = new DataContext(_connectionString);
+            var responseObject = new WordDictionary();
+            var requset = $"select Words.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = '{translate}') t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                SqlCommand commande = new SqlCommand(requset, connection);
+                var response = commande.ExecuteReader();
+                if (response.HasRows)
+                {
+                    while (response.Read())
+                    {
+                        responseObject.Id = response["id"] as int? ?? 0;
+                        responseObject.Original = response["value"] as string;
+                        responseObject.Translate = translate;
+                    }
+                }
 
-            // Получаем таблицу пользователей
-
-            var query = from u in db.GetTable<WordDictionary>()
-                where u.Translate == translate
-                select u;
-            return query.FirstOrDefault();
+            }
+            return responseObject;
         }
 
         public void SetWord(string original, string translate)

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using LinguoCardService.DataContracts;
 using LinguoCardService.Domain.Abstractions;
+using Swashbuckle.Swagger.Annotations;
 
 namespace LinguoCardService.Controllers
 {
@@ -28,40 +30,34 @@ namespace LinguoCardService.Controllers
 
         
         /// <summary>
-        /// Gets something
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerable<string> Get()
-        {
-
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
-        /// <summary>
         /// Gets a given dictionary
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IHttpActionResult Get(int id)
+        [HttpGet]
+        [Route("Dictionary/{id}")]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
+            Description = "Translate word by id")]
+        public IHttpActionResult GetTranslateById(int id)
         {
             var result = _dictionaryService.GetById(id);
             return Content(HttpStatusCode.OK, result);
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        /// <summary>
+        /// Get a tranlate in English by Russian word
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("Dictionary/translate/ru-en/{word}")]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
+            Description = "Translate word from russian to english")]
+        public IHttpActionResult GetTranslateByRussianWord(string word)
         {
+            var result = _dictionaryService.GetByTranslateWord(word);
+            return Content(HttpStatusCode.OK, result);
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
     }
 }
