@@ -45,24 +45,35 @@ namespace LinguoCardService.Repositories
 
         public WordDictionary GetByOriginallWord(string original)
         {
-            DataContext db = new DataContext(_connectionString);
+            var responseObject = new WordDictionary();
+            var request = $"select Words.id as id, Words.value as value  from Words, (select Words.id as id from Words where Words.value = '{original}') t1,Dictionary where Dictionary.english_id = t1.id and Dictionary.russian_id = Words.id";
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                SqlCommand commande = new SqlCommand(request, connection);
+                var response = commande.ExecuteReader();
+                if (response.HasRows)
+                {
+                    while (response.Read())
+                    {
+                        responseObject.Id = response["id"] as int? ?? 0;
+                        responseObject.Original = original;
+                        responseObject.Translate = response["value"] as string; ;
+                    }
+                }
 
-            // Получаем таблицу пользователей
-
-            var query = from u in db.GetTable<WordDictionary>()
-                where u.Original == original
-                select u;
-            return query.FirstOrDefault();
+            }
+            return responseObject;
         }
 
         public WordDictionary GetByTranslateWord(string translate)
         {
             var responseObject = new WordDictionary();
-            var requset = $"select Words.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = '{translate}') t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
+            var request = $"select Words.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = '{translate}') t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand commande = new SqlCommand(requset, connection);
+                SqlCommand commande = new SqlCommand(request, connection);
                 var response = commande.ExecuteReader();
                 if (response.HasRows)
                 {

@@ -58,6 +58,20 @@ namespace LinguoCardService.Controllers
             var result = _dictionaryService.GetByTranslateWord(word);
             return Content(HttpStatusCode.OK, result);
         }
+        /// <summary>
+        /// Get a tranlate in Russian by English word
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("Dictionary/translate/en-ru/{word}")]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
+            Description = "Translate word from english to russian")]
+        public IHttpActionResult GetTranslateByEnglishWord(string word)
+        {
+            var result = _dictionaryService.GetByOriginallWord(word);
+            return Content(HttpStatusCode.OK, result);
+        }
 
     }
 }

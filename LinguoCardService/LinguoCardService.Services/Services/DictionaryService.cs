@@ -23,7 +23,8 @@ namespace LinguoCardService.Services.Services
 
         public WordDictionary GetByOriginallWord(string original)
         {
-            throw new NotImplementedException();
+            var requestResult = _repository.GetByOriginallWord(original);
+            return requestResult;
         }
 
         public WordDictionary GetByTranslateWord(string translate)
