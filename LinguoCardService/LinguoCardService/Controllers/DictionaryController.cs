@@ -16,13 +16,21 @@ namespace LinguoCardService.Controllers
     {
         private readonly IDictionaryService _dictionaryService;
 
+        /// <summary>
+        /// Constructor injection
+        /// </summary>
+        /// <param name="dictionaryServices"></param>
         public DictionaryController(IDictionaryService dictionaryServices)
         {
             this._dictionaryService = dictionaryServices 
                 ?? throw new ArgumentNullException(nameof(dictionaryServices));
         }
 
-        // GET api/<controller>
+        
+        /// <summary>
+        /// Gets something
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> Get()
         {
 
@@ -30,6 +38,11 @@ namespace LinguoCardService.Controllers
         }
 
         // GET api/<controller>/5
+        /// <summary>
+        /// Gets a given dictionary
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             var result = _dictionaryService.GetById(id);
