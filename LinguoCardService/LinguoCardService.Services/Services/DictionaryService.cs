@@ -14,16 +14,16 @@ namespace LinguoCardService.Services.Services
                               throw new ArgumentNullException(nameof(WordDictionaryRepository));
         }
 
-        public WordDictionary GetById(int id, string language)
+        public WordDictionary GetById(int id)
         {
-            var requestResult = _repository.GetById(id, language);
+            var requestResult = _repository.GetById(id);
 
             return requestResult;
         }
 
         public WordDictionary GetByOriginallWord(string original)
         {
-            var requestResult = _repository.GetByOriginallWord(original);
+            var requestResult = _repository.GetByOriginalWord(original);
             return requestResult;
         }
 
@@ -37,6 +37,18 @@ namespace LinguoCardService.Services.Services
         {
             var requestResult= _repository.SetWord(original,translate);
             return requestResult;
+        }
+
+        public WordDictionary UpdateWord(int id, string newWord)
+        {
+            var resultRequest = _repository.UpdateWord(id, newWord);
+            return resultRequest;
+        }
+
+        public bool DeleteWord(int id)
+        {
+            var resultRequest = _repository.DeleteWord(id);
+            return resultRequest;
         }
     }
 }
