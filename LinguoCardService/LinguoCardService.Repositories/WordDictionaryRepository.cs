@@ -28,9 +28,10 @@ namespace LinguoCardService.Repositories
             {
                 request = $"select t1.value as English, Words.value as Russian from Words,(select Dictionary.id as id, Words.value as value, Dictionary.russian_id as russianID from Words, Dictionary where Words.id = '{id}' and Dictionary.english_id = Words.id) t1 where Words.id=t1.russianID;";
             }
-            
+             var request = "select e.value as English_value, r.value as Russian_value from Dictionary d join Words e on e.id=d.english_id join Words r on r.id = d.russian_id where d.id ='1'"
 
-            
+
+
             using (var connection = Connection)
             {
                 connection.Open();

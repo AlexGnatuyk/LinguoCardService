@@ -1,25 +1,21 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.Owin;
 using Owin;
 
+[assembly: OwinStartup(typeof(LinguoCardService.Startup))]
+
 namespace LinguoCardService
 {
-    
-   //[assembly:OwinStartup(typeof(LinguoCardService.Startup))]
     public class Startup
     {
-        /// <summary>
-        /// Configuration
-        /// </summary>
-        /// <param name="appBuilder"></param>
-        public void Configuration(IAppBuilder appBuilder)
+        public void Configuration(IAppBuilder app)
         {
             var config = new HttpConfiguration();
             WebApiConfig.Register(config);
             AutofacWebapiConfig.SetDependencyResolver(config);
-
-            // move other lines over here
-            appBuilder.UseWebApi(config);
+            app.UseWebApi(config);
         }
     }
 }
