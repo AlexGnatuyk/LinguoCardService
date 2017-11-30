@@ -85,7 +85,7 @@ namespace LinguoCardService.Controllers
             Description = "Word was added in dictionary")]
         public IHttpActionResult AddWordsInDictionary(string original, string translate)
         {
-            var result = _dictionaryService.SetWord(original, translate);
+            var result = _dictionaryService.AddWord(original, translate);
             return Content(HttpStatusCode.OK, result);
         }
 

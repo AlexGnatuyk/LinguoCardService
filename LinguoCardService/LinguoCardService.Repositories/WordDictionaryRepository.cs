@@ -8,29 +8,30 @@ using LinguoCardService.Domain.Abstractions;
 
 namespace LinguoCardService.Repositories
 {
-    public class WordDictionaryRepository : IWordDictionaryRepository
+    public class WordDictionaryRepository : Repository, IWordDictionaryRepository
     {
         readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         
         public WordDictionary GetById(int id)
         {
             var responseObject = new WordDictionary();
-            string language = null;
-            string request = null;
-            language = CheckRuOrEngWord(id);
             
-            if (language=="ru")
+            string request = null;
+            var language = CheckRuOrEngWord(id);
+            
+            if (language.ToString()=="ru")
             {
                 request =
                     $"select t1.value as Russian, Words.value as English from Words,(select Dictionary.id as id, Words.value as value, Dictionary.english_id as englishID from Words, Dictionary where Words.id = '{id}' and Dictionary.russian_id = Words.id) t1 where Words.id=t1.englishID;";
             }
-            if(language=="eng")
+            if(language.ToString()=="eng")
             {
                 request = $"select t1.value as English, Words.value as Russian from Words,(select Dictionary.id as id, Words.value as value, Dictionary.russian_id as russianID from Words, Dictionary where Words.id = '{id}' and Dictionary.english_id = Words.id) t1 where Words.id=t1.russianID;";
             }
             
+
             
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = Connection)
             {
                 connection.Open();
                 var commande = new SqlCommand(request, connection);
@@ -50,7 +51,7 @@ namespace LinguoCardService.Repositories
         {
             var responseObject = new WordDictionary();
             var request = $"select Words.id as id, Words.value as value  from Words, (select Words.id as id from Words where Words.value = '{original}') t1,Dictionary where Dictionary.english_id = t1.id and Dictionary.russian_id = Words.id";
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection =Connection)
             {
                 connection.Open();
                 SqlCommand commande = new SqlCommand(request, connection);
@@ -73,7 +74,7 @@ namespace LinguoCardService.Repositories
         {
             var responseObject = new WordDictionary();
             var request = $"select Words.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = '{translate}') t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = Connection)
             {
                 connection.Open();
                 SqlCommand commande = new SqlCommand(request, connection);
@@ -92,7 +93,7 @@ namespace LinguoCardService.Repositories
             return responseObject;
         }
 
-        public WordDictionary SetWord(string original, string translate)
+        public WordDictionary AddWord(string original, string translate)
         {
             var requestEngInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES ('{original}', 'eng')";
             var requestEngGet = $"select Words.id  as id from Words where Words.value='{original}';";
@@ -103,7 +104,7 @@ namespace LinguoCardService.Repositories
             int engId = 0;
             int rusId = 0;
 
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = Connection)
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(requestEngInsert, connection);
@@ -111,7 +112,7 @@ namespace LinguoCardService.Repositories
                 if(flag == 0) throw new ArgumentException();
                
 
-                command = new SqlCommand(requestEngGet,connection);
+                command = new SqlCommand(requestEngGet, connection);
                 var response = command.ExecuteReader();
                 if (response.HasRows)
                 {
@@ -122,7 +123,7 @@ namespace LinguoCardService.Repositories
                 }
                 response.Close();
 
-                command = new SqlCommand(requestRusInsert,connection);
+                command = new SqlCommand(requestRusInsert, connection);
                 flag = command.ExecuteNonQuery();
                 if(flag == 0) throw  new ArgumentException();
 
@@ -139,7 +140,7 @@ namespace LinguoCardService.Repositories
 
                 if (engId ==0 || rusId ==0) throw new ArgumentException();
                 var requestDictionaryInsert = $"INSERT INTO [dbo].[Dictionary] ([english_id],[russian_id]) VALUES ({engId}, {rusId})";
-                command = new SqlCommand(requestDictionaryInsert,connection);
+                command = new SqlCommand(requestDictionaryInsert, connection);
                 flag = command.ExecuteNonQuery();
                 if (flag == 0) throw new ArgumentException();
 
@@ -165,10 +166,10 @@ namespace LinguoCardService.Repositories
         public WordDictionary UpdateWord(int id, string newValue)
         {
             var request = $"UPDATE [dbo].[Words] SET[value] = '{newValue}' WHERE Words.id = {id}";
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = Connection)
             {
                 connection.Open();
-                var command = new SqlCommand(request,connection);
+                var command = new SqlCommand(request, connection);
                 var flag = command.ExecuteNonQuery();
                 if(flag==0) throw new ArgumentException();
             }
@@ -183,11 +184,11 @@ namespace LinguoCardService.Repositories
             int engId = 0;
             int ruID = 0;
 
-            if (language == "ru")
+            if (language.ToString() == "ru")
             {
                 ruID = id;
                 var request = $"select Dictionary.english_id as EnglisID from Dictionary where Dictionary.russian_id = '{id}'";
-                using (SqlConnection connection = new SqlConnection(_connectionString))
+                using (var connection = Connection)
                 {
                     connection.Open();
                     var commande = new SqlCommand(request, connection);
@@ -204,7 +205,7 @@ namespace LinguoCardService.Repositories
                     if(engId == 0) throw new ArgumentException();
 
                     request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{ruID}'";
-                    commande = new SqlCommand(request,connection);
+                    commande = new SqlCommand(request, connection);
                     var flag = commande.ExecuteNonQuery();
                     if (flag == 0) throw new ArgumentException();
 
@@ -215,12 +216,12 @@ namespace LinguoCardService.Repositories
                 }
                 return true;
             }
-            if (language == "eng")
+            if (language.ToString() == "eng")
             {
                 engId = id;
                 var request =
                     $"select Dictionary.russian_id as RussianId from Dictionary where Dictionary.english_id = '{id}'";
-                using (SqlConnection connection = new SqlConnection(_connectionString))
+                using (var connection = Connection)
                 {
                     connection.Open();
                     var commande = new SqlCommand(request, connection);
@@ -251,28 +252,28 @@ namespace LinguoCardService.Repositories
             return false;
         }
 
-        public string CheckRuOrEngWord(int id)
+        public Language CheckRuOrEngWord(int id)
         {
             var request = $"select Words.language as language from Words where Words.id = {id}";
-            string language = null;
+            Language language = Language.eng;
 
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var conection = Connection)
             {
-                connection.Open();
-                var commande = new SqlCommand(request, connection);
+                conection.Open();
+                var commande = new SqlCommand(request, conection);
                 var response = commande.ExecuteReader();
                 if (response.HasRows)
                 {
                     while (response.Read())
                         {
-                            language = response["language"] as string;
-                            var temp = language.Split();
-                            language = temp[0];
-                        }
+                            var stringResponse = response["language"] as string;
+                            var temp = stringResponse?.Split();
+                            if (temp != null && temp[0] == "ru") language = Language.ru;
+                            }
                 }
                 response.Close();
             }
-            if (language == null) throw new ArgumentException(nameof(request));
+            
             return language;
         }
     }
