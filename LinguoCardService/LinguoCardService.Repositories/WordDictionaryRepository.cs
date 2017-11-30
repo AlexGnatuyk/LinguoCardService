@@ -255,7 +255,7 @@ namespace LinguoCardService.Repositories
         public Language CheckRuOrEngWord(int id)
         {
             var request = $"select Words.language as language from Words where Words.id = {id}";
-            Language language = Language.eng;
+            Language language = Language.Eng;
 
             using (var conection = Connection)
             {
@@ -268,7 +268,7 @@ namespace LinguoCardService.Repositories
                         {
                             var stringResponse = response["language"] as string;
                             var temp = stringResponse?.Split();
-                            if (temp != null && temp[0] == "ru") language = Language.ru;
+                            if (temp != null && temp[0] == "ru") language = Language.Ru;
                             }
                 }
                 response.Close();

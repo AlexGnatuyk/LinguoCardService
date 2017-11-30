@@ -8,10 +8,10 @@
         /// <summary>
         /// English language
         /// </summary>
-        eng = 0,
+        Eng = 0,
         /// <summary>
         /// Russian language
         /// </summary>
-        ru = 1
+        Ru = 1
     }
 }
