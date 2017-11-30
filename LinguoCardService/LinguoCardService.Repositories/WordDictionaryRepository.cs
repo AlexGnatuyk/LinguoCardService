@@ -25,7 +25,7 @@ namespace LinguoCardService.Repositories
                 var commande = new SqlCommand(request, connection);
                 commande.Parameters.AddWithValue("@id", id);
                 var response = commande.ExecuteReader();
-                if (!response.HasRows) return responseObject;
+                if (!response.HasRows) throw new ArgumentException();
                 while (response.Read())
                 {
                     responseObject.Id = id;
@@ -87,8 +87,7 @@ namespace LinguoCardService.Repositories
         public WordDictionary AddWord(string original, string translate)
         {
             var requestEngInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES (@original, 'eng'); select scope_identity() as id;";
-            var requestGetLastId = $"select scope_identity() as id;";
-            var requestRusInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES (@translate, 'ru')";
+            var requestRusInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES (@translate, 'ru'); select scope_identity() as id;";
             
             var responseObject = new WordDictionary();
 
@@ -100,54 +99,55 @@ namespace LinguoCardService.Repositories
                 connection.Open();
                 SqlCommand command = new SqlCommand(requestEngInsert, connection);
                 command.Parameters.AddWithValue("@original", original);
-                //var flag = command.ExecuteNonQuery();
-                //if(flag == 0) throw new ArgumentException();
-               
-
-                //command = new SqlCommand(requestGetLastId, connection);
+                
                 var response = command.ExecuteReader();
+                
                 if (response.HasRows)
                 {
                     while (response.Read())
                     {
-                        engId = (int) response["id"];
+                        string respId = "";
+
+                        // Каст (int) невозможен, поэтому костыль
+                        respId = response["id"].ToString();
+                        engId = Int32.Parse(respId);
                     }
                 }
                 response.Close();
 
                 command = new SqlCommand(requestRusInsert, connection);
                 command.Parameters.AddWithValue("@translate", translate);
-                flag = command.ExecuteNonQuery();
-                if(flag == 0) throw  new ArgumentException();
-
-                command = new SqlCommand(requestGetLastId, connection);
+                
                 response = command.ExecuteReader();
                 if (response.HasRows)
                 {
                     while (response.Read())
                     {
-                        rusId = (int)response["id"];
+                        string respId = "";
+
+                        // Каст (int) невозможен, поэтому костыль
+                        respId = response["id"].ToString();
+                        rusId = Int32.Parse(respId);
                     }
                 }
                 response.Close();
 
                 if (engId ==0 || rusId ==0) throw new ArgumentException();
-                var requestDictionaryInsert = $"INSERT INTO [dbo].[Dictionary] ([english_id],[russian_id]) VALUES (@engId, @rusId)";
+                var requestDictionaryInsert = $"INSERT INTO [dbo].[Dictionary] ([english_id],[russian_id]) VALUES (@engId, @rusId); select scope_identity() as id;";
                 command = new SqlCommand(requestDictionaryInsert, connection);
                 command.Parameters.AddWithValue("@engId", engId);
                 command.Parameters.AddWithValue("@rusId", rusId);
 
-                flag = command.ExecuteNonQuery();
-                if (flag == 0) throw new ArgumentException();
-
-               // var requestDictionaryId = $"select Dictionary.id from Dictionary where Dictionary.english_id='{engId}'";
-                command = new SqlCommand(requestGetLastId, connection);
                 response = command.ExecuteReader();
                 if (response.HasRows)
                 {
                     while (response.Read())
                     {
-                        responseObject.Id = (int)response["id"];
+                        string respId = "";
+
+                        // Каст (int) невозможен, поэтому костыль
+                        respId = response["id"].ToString();
+                        responseObject.Id = Int32.Parse(respId);
                     }
                 }
                 response.Close();
@@ -161,11 +161,13 @@ namespace LinguoCardService.Repositories
 
         public WordDictionary UpdateWord(int id, string newValue)
         {
-            var request = $"UPDATE [dbo].[Words] SET[value] = '{newValue}' WHERE Words.id = {id}";
+            var request = $"UPDATE [dbo].[Words] SET[value] = @newValue WHERE Words.id = @id";
             using (var connection = Connection)
             {
                 connection.Open();
                 var command = new SqlCommand(request, connection);
+                command.Parameters.AddWithValue("@newValue", newValue);
+                command.Parameters.AddWithValue("@id", id);
                 var flag = command.ExecuteNonQuery();
                 if(flag==0) throw new ArgumentException();
             }
@@ -180,14 +182,15 @@ namespace LinguoCardService.Repositories
             int engId = 0;
             int ruID = 0;
 
-            if (language.ToString() == "ru")
+            if (language.ToString() == "Ru")
             {
                 ruID = id;
-                var request = $"select Dictionary.english_id as EnglisID from Dictionary where Dictionary.russian_id = '{id}'";
+                var request = $"select Dictionary.english_id as EnglisID from Dictionary where Dictionary.russian_id = @id";
                 using (var connection = Connection)
                 {
                     connection.Open();
                     var commande = new SqlCommand(request, connection);
+                    commande.Parameters.AddWithValue("@id", id);
                     var response = commande.ExecuteReader();
                     if (response.HasRows)
                     {
@@ -200,27 +203,25 @@ namespace LinguoCardService.Repositories
 
                     if(engId == 0) throw new ArgumentException();
 
-                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{ruID}'";
+                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id=@ruId; DELETE FROM [dbo].[Words] WHERE Words.id=@engId";
                     commande = new SqlCommand(request, connection);
+                    commande.Parameters.AddWithValue("@ruId", ruID);
+                    commande.Parameters.AddWithValue("@engId", engId);
                     var flag = commande.ExecuteNonQuery();
                     if (flag == 0) throw new ArgumentException();
-
-                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{engId}'";
-                    commande = new SqlCommand(request, connection);
-                    flag = commande.ExecuteNonQuery();
-                    if (flag == 0) throw new ArgumentException();
+                    
                 }
                 return true;
             }
-            if (language.ToString() == "eng")
+            if (language.ToString() == "Eng")
             {
                 engId = id;
-                var request =
-                    $"select Dictionary.russian_id as RussianId from Dictionary where Dictionary.english_id = '{id}'";
+                var request = $"select Dictionary.russian_id as RussianId from Dictionary where Dictionary.english_id = @id";
                 using (var connection = Connection)
                 {
                     connection.Open();
                     var commande = new SqlCommand(request, connection);
+                    commande.Parameters.AddWithValue("@id", id);
                     var response = commande.ExecuteReader();
                     if (response.HasRows)
                     {
@@ -233,30 +234,28 @@ namespace LinguoCardService.Repositories
 
                     if (ruID == 0) throw new ArgumentException();
 
-                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{ruID}'";
+                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id=@ruId; DELETE FROM [dbo].[Words] WHERE Words.id=@engId";
                     commande = new SqlCommand(request, connection);
+                    commande.Parameters.AddWithValue("@ruId", ruID);
+                    commande.Parameters.AddWithValue("@engId", engId);
                     var flag = commande.ExecuteNonQuery();
-                    if (flag == 0) throw new ArgumentException();
-
-                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id='{engId}'";
-                    commande = new SqlCommand(request, connection);
-                    flag = commande.ExecuteNonQuery();
                     if (flag == 0) throw new ArgumentException();
                 }
                 return true;
             }
-            return false;
+            throw new ArgumentException();
         }
 
         public Language CheckRuOrEngWord(int id)
         {
-            var request = $"select Words.language as language from Words where Words.id = {id}";
+            var request = $"select Words.language as language from Words where Words.id = @id";
             Language language = Language.Eng;
 
             using (var conection = Connection)
             {
                 conection.Open();
                 var commande = new SqlCommand(request, conection);
+                commande.Parameters.AddWithValue("@id", id);
                 var response = commande.ExecuteReader();
                 if (response.HasRows)
                 {
