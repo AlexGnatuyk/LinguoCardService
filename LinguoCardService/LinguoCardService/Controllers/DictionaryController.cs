@@ -52,7 +52,7 @@ namespace LinguoCardService.Controllers
         [Route("Dictionary/translate/{word}")]
         public WordDictionary GetTranslateByWord(string word, Language language = Language.Eng)
         {
-            if (language.ToString() == "ru") return _dictionaryService.GetByTranslateWord(word);
+            if (language.ToString() == "Ru") return _dictionaryService.GetByTranslateWord(word);
             return _dictionaryService.GetByOriginallWord(word);
         }
         

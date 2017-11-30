@@ -15,34 +15,22 @@ namespace LinguoCardService.Repositories
         public WordDictionary GetById(int id)
         {
             var responseObject = new WordDictionary();
-            
-            string request = null;
+
+            string request = $"select e.value as English_value, r.value as Russian_value from Dictionary d join Words e on e.id=d.english_id join Words r on r.id = d.russian_id where d.id =@id";
             var language = CheckRuOrEngWord(id);
             
-            if (language.ToString()=="ru")
-            {
-                request =
-                    $"select t1.value as Russian, Words.value as English from Words,(select Dictionary.id as id, Words.value as value, Dictionary.english_id as englishID from Words, Dictionary where Words.id = '{id}' and Dictionary.russian_id = Words.id) t1 where Words.id=t1.englishID;";
-            }
-            if(language.ToString()=="eng")
-            {
-                request = $"select t1.value as English, Words.value as Russian from Words,(select Dictionary.id as id, Words.value as value, Dictionary.russian_id as russianID from Words, Dictionary where Words.id = '{id}' and Dictionary.english_id = Words.id) t1 where Words.id=t1.russianID;";
-            }
-             var request = "select e.value as English_value, r.value as Russian_value from Dictionary d join Words e on e.id=d.english_id join Words r on r.id = d.russian_id where d.id ='1'"
-
-
-
             using (var connection = Connection)
             {
                 connection.Open();
                 var commande = new SqlCommand(request, connection);
+                commande.Parameters.AddWithValue("@id", id);
                 var response = commande.ExecuteReader();
                 if (!response.HasRows) return responseObject;
                 while (response.Read())
                 {
                     responseObject.Id = id;
-                    responseObject.Original = response["English"] as string;
-                    responseObject.Translate = response["Russian"] as string;
+                    responseObject.Original = response["English_value"] as string;
+                    responseObject.Translate = response["Russian_value"] as string;
                 }
             }
             return responseObject;
@@ -51,11 +39,12 @@ namespace LinguoCardService.Repositories
         public WordDictionary GetByOriginalWord(string original)
         {
             var responseObject = new WordDictionary();
-            var request = $"select Words.id as id, Words.value as value  from Words, (select Words.id as id from Words where Words.value = '{original}') t1,Dictionary where Dictionary.english_id = t1.id and Dictionary.russian_id = Words.id";
+            var request = $"select Words.id as id, Words.value as value  from Words, (select Words.id as id from Words where Words.value = @original) t1,Dictionary where Dictionary.english_id = t1.id and Dictionary.russian_id = Words.id";
             using (var connection =Connection)
             {
                 connection.Open();
                 SqlCommand commande = new SqlCommand(request, connection);
+                commande.Parameters.AddWithValue("@original", original);
                 var response = commande.ExecuteReader();
                 if (response.HasRows)
                 {
@@ -74,11 +63,12 @@ namespace LinguoCardService.Repositories
         public WordDictionary GetByTranslateWord(string translate)
         {
             var responseObject = new WordDictionary();
-            var request = $"select Words.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = '{translate}') t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
+            var request = $"select Words.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = @translate) t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
             using (var connection = Connection)
             {
                 connection.Open();
                 SqlCommand commande = new SqlCommand(request, connection);
+                commande.Parameters.AddWithValue("@translate", translate);
                 var response = commande.ExecuteReader();
                 if (response.HasRows)
                 {
