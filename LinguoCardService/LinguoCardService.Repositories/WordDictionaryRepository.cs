@@ -86,10 +86,10 @@ namespace LinguoCardService.Repositories
 
         public WordDictionary AddWord(string original, string translate)
         {
-            var requestEngInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES ('{original}', 'eng')";
-            var requestEngGet = $"select Words.id  as id from Words where Words.value='{original}';";
-            var requestRusInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES ('{translate}', 'ru')";
-            var requestRusGet = $"select Words.id  as id from Words where Words.value='{translate}';";
+            var requestEngInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES (@original, 'eng'); select scope_identity() as id;";
+            var requestGetLastId = $"select scope_identity() as id;";
+            var requestRusInsert = $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES (@translate, 'ru')";
+            
             var responseObject = new WordDictionary();
 
             int engId = 0;
@@ -99,11 +99,12 @@ namespace LinguoCardService.Repositories
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(requestEngInsert, connection);
-                var flag = command.ExecuteNonQuery();
-                if(flag == 0) throw new ArgumentException();
+                command.Parameters.AddWithValue("@original", original);
+                //var flag = command.ExecuteNonQuery();
+                //if(flag == 0) throw new ArgumentException();
                
 
-                command = new SqlCommand(requestEngGet, connection);
+                //command = new SqlCommand(requestGetLastId, connection);
                 var response = command.ExecuteReader();
                 if (response.HasRows)
                 {
@@ -115,10 +116,11 @@ namespace LinguoCardService.Repositories
                 response.Close();
 
                 command = new SqlCommand(requestRusInsert, connection);
+                command.Parameters.AddWithValue("@translate", translate);
                 flag = command.ExecuteNonQuery();
                 if(flag == 0) throw  new ArgumentException();
 
-                command = new SqlCommand(requestRusGet, connection);
+                command = new SqlCommand(requestGetLastId, connection);
                 response = command.ExecuteReader();
                 if (response.HasRows)
                 {
@@ -130,13 +132,16 @@ namespace LinguoCardService.Repositories
                 response.Close();
 
                 if (engId ==0 || rusId ==0) throw new ArgumentException();
-                var requestDictionaryInsert = $"INSERT INTO [dbo].[Dictionary] ([english_id],[russian_id]) VALUES ({engId}, {rusId})";
+                var requestDictionaryInsert = $"INSERT INTO [dbo].[Dictionary] ([english_id],[russian_id]) VALUES (@engId, @rusId)";
                 command = new SqlCommand(requestDictionaryInsert, connection);
+                command.Parameters.AddWithValue("@engId", engId);
+                command.Parameters.AddWithValue("@rusId", rusId);
+
                 flag = command.ExecuteNonQuery();
                 if (flag == 0) throw new ArgumentException();
 
-                var requestDictionaryId = $"select Dictionary.id from Dictionary where Dictionary.english_id='{engId}'";
-                command = new SqlCommand(requestDictionaryId, connection);
+               // var requestDictionaryId = $"select Dictionary.id from Dictionary where Dictionary.english_id='{engId}'";
+                command = new SqlCommand(requestGetLastId, connection);
                 response = command.ExecuteReader();
                 if (response.HasRows)
                 {
