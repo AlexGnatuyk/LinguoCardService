@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICardGroupsRepository.cs" />
+    <Compile Include="ICardGroupsService.cs" />
     <Compile Include="ICardListRepository.cs" />
     <Compile Include="ICardRepository.cs" />
     <Compile Include="ICardsService.cs" />
