@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService", "LinguoCardService\LinguoCardService.csproj", "{82D12696-CA30-4624-AA91-BD4F1BAFC386}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.Services", "LinguoCardService.Services\LinguoCardService.Services.csproj", "{0BC3E93E-9846-4DB6-936D-1737F58C676B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.Repositories", "LinguoCardService.Repositories\LinguoCardService.Repositories.csproj", "{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.RepositoriesTests", "LinguoCardService.RepositoriesTests\LinguoCardService.RepositoriesTests.csproj", "{FFAA6633-BDAC-40A8-B477-FB01DB566C84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,12 +49,17 @@ Global
 		{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFAA6633-BDAC-40A8-B477-FB01DB566C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFAA6633-BDAC-40A8-B477-FB01DB566C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFAA6633-BDAC-40A8-B477-FB01DB566C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFAA6633-BDAC-40A8-B477-FB01DB566C84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C62B26B2-B12B-4E10-86EF-4B955E32732D} = {2C3F95A7-EF6E-4C44-8B69-349921E2C0E6}
+		{FFAA6633-BDAC-40A8-B477-FB01DB566C84} = {2C3F95A7-EF6E-4C44-8B69-349921E2C0E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {036E3CB0-7692-4996-9578-1726E3560D19}

@@ -10,8 +10,6 @@ namespace LinguoCardService.Repositories
 {
     public class WordDictionaryRepository : Repository, IWordDictionaryRepository
     {
-        readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        
         public WordDictionary GetById(int id)
         {
             var responseObject = new WordDictionary();
@@ -32,8 +30,9 @@ namespace LinguoCardService.Repositories
                     responseObject.Original = response["English_value"] as string;
                     responseObject.Translate = response["Russian_value"] as string;
                 }
+                return responseObject;
             }
-            return responseObject;
+            throw new ArgumentException();
         }
 
         public WordDictionary GetByOriginalWord(string original)

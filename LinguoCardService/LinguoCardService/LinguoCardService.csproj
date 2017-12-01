@@ -248,6 +248,7 @@
     <Compile Include="App_Start\AutofacWebapiConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="DependencyInjection\WebApiExtentions.cs" />
     <Compile Include="Global.asax.cs">
