@@ -18,7 +18,10 @@ namespace LinguoCardService.Repositories
         public CardGroup GetGroup(int id)
         {
             CardGroup resultGroup = new CardGroup();
-            Card mainCard = _dictionaryRepository.GetById(id) as Card;
+            var tempCard = _dictionaryRepository.GetById(id);
+
+            // TODO Разобраться с кастом. Почему не кастуется
+            Card mainCard = tempCard as Card;
             if (mainCard == null) throw new ArgumentException();
             List<Card> mainCardList = new List<Card>();
             var additionald = GetListOfAdditionalCards(mainCard.Id);
