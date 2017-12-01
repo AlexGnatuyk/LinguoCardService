@@ -27,14 +27,15 @@ namespace LinguoCardService.Repositories
                 while (response.Read())
                 {
                     responseObject.Id = id;
-                    responseObject.Original = response["English_value"] as string;
-                    responseObject.Translate = response["Russian_value"] as string;
+                    responseObject.EnglishValue = response["English_value"] as string;
+                    responseObject.RussianValue = response["Russian_value"] as string;
                 }
                 return responseObject;
             }
             throw new ArgumentException();
         }
 
+        // TODO Change id (now id of word, but must be id of Dictionary)
         public WordDictionary GetByOriginalWord(string original)
         {
             var responseObject = new WordDictionary();
@@ -50,8 +51,8 @@ namespace LinguoCardService.Repositories
                     while (response.Read())
                     {
                         responseObject.Id = response["id"] as int? ?? 0;
-                        responseObject.Original = original;
-                        responseObject.Translate = response["value"] as string; ;
+                        responseObject.EnglishValue = original;
+                        responseObject.RussianValue = response["value"] as string; ;
                     }
                 }
 
@@ -74,8 +75,8 @@ namespace LinguoCardService.Repositories
                     while (response.Read())
                     {
                         responseObject.Id = response["id"] as int? ?? 0;
-                        responseObject.Original = response["value"] as string;
-                        responseObject.Translate = translate;
+                        responseObject.EnglishValue = response["value"] as string;
+                        responseObject.RussianValue = translate;
                     }
                 }
 
@@ -151,8 +152,8 @@ namespace LinguoCardService.Repositories
                 }
                 response.Close();
 
-                responseObject.Original = original;
-                responseObject.Translate = translate;
+                responseObject.EnglishValue = original;
+                responseObject.RussianValue = translate;
 
             }
             return responseObject;

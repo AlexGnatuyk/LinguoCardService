@@ -13,8 +13,8 @@ namespace LinguoCardServiceTests.Services
             var expected = new WordDictionary
             {
                 Id = 1,
-                Original = "Car",
-                Translate = "Машина"
+                EnglishValue = "Car",
+                RussianValue = "Машина"
             };
 
             return expected;
@@ -30,7 +30,7 @@ namespace LinguoCardServiceTests.Services
 
             var result = service.GetById(id);
 
-            if (expected.Id == result.Id && expected.Original == result.Original && expected.Translate == result.Translate) Assert.IsTrue(true);
+            if (expected.Id == result.Id && expected.EnglishValue == result.EnglishValue && expected.RussianValue == result.RussianValue) Assert.IsTrue(true);
             else
             {
                 Assert.IsFalse(true);
