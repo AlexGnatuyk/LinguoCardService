@@ -33,9 +33,9 @@ namespace LinguoCardService.Services.Services
             return requestResult;
         }
 
-        public WordDictionary SetWord(string original, string translate)
+        public WordDictionary AddWord(string original, string translate)
         {
-            var requestResult= _repository.SetWord(original,translate);
+            var requestResult= _repository.AddWord(original,translate);
             return requestResult;
         }
 

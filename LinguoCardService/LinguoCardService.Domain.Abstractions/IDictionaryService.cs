@@ -7,7 +7,7 @@ namespace LinguoCardService.Domain.Abstractions
         WordDictionary GetById(int id);
         WordDictionary GetByOriginallWord(string original);
         WordDictionary GetByTranslateWord(string translate);
-        WordDictionary SetWord(string original, string translate);
+        WordDictionary AddWord(string original, string translate);
         WordDictionary UpdateWord(int id, string newWord);
         bool DeleteWord(int id);
     }

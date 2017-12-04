@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICardRepository.cs" />
+    <Compile Include="ICardGroupsRepository.cs" />
+    <Compile Include="ICardGroupsService.cs" />
     <Compile Include="IDictionaryService.cs" />
+    <Compile Include="IQuizService.cs" />
     <Compile Include="IWordDictionaryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

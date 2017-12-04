@@ -36,43 +36,26 @@ namespace LinguoCardService.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("Dictionary/{id}")]
-        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
-            Description = "Translate word by id")]
-        public IHttpActionResult GetTranslateById(int id)
+        public WordDictionary GetTranslateById(int id)
         {
-            var result = _dictionaryService.GetById(id);
-            return Content(HttpStatusCode.OK, result);
+            return _dictionaryService.GetById(id);
+            
         }
 
         /// <summary>
-        /// Get a translate in English by Russian word
+        /// Get a translation by word
         /// </summary>
-        /// <param name="word"></param>
+        /// <param name="word">Word what shuld be translated</param>
+        /// <param name="language">You should choose from which language you want translate Eng - 0, Ru - 1</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Dictionary/translate/ru-en/{word}")]
-        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
-            Description = "Translate word from russian to english")]
-        public IHttpActionResult GetTranslateByRussianWord(string word)
+        [Route("Dictionary/translate/{word}")]
+        public WordDictionary GetTranslateByWord(string word, Language language = Language.Eng)
         {
-            var result = _dictionaryService.GetByTranslateWord(word);
-            return Content(HttpStatusCode.OK, result);
+            if (language.ToString() == "Ru") return _dictionaryService.GetByTranslateWord(word);
+            return _dictionaryService.GetByOriginallWord(word);
         }
-        /// <summary>
-        /// Get a translate in Russian by English word
-        /// </summary>
-        /// <param name="word"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("Dictionary/translate/en-ru/{word}")]
-        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
-            Description = "Translate word from english to russian")]
-        public IHttpActionResult GetTranslateByEnglishWord(string word)
-        {
-            var result = _dictionaryService.GetByOriginallWord(word);
-            return Content(HttpStatusCode.OK, result);
-        }
-
+        
         /// <summary>
         /// Add you own word and translation in dictionary
         /// </summary>
@@ -83,10 +66,10 @@ namespace LinguoCardService.Controllers
         [Route("Dictionaty/AddWord/{original}-{translate}")]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
             Description = "Word was added in dictionary")]
-        public IHttpActionResult AddWordsInDictionary(string original, string translate)
+        public WordDictionary AddWordsInDictionary(string original, string translate)
         {
-            var result = _dictionaryService.SetWord(original, translate);
-            return Content(HttpStatusCode.OK, result);
+            return _dictionaryService.AddWord(original, translate);
+           
         }
 
         /// <summary>
@@ -99,10 +82,10 @@ namespace LinguoCardService.Controllers
         [Route("Dictionary/Update/{id}-{newWord}")]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
             Description = "Word was added in dictionary")]
-        public IHttpActionResult UpdateWordInDictionary(int id, string newWord)
+        public WordDictionary UpdateWordInDictionary(int id, string newWord)
         {
-            var result = _dictionaryService.UpdateWord(id, newWord);
-            return Content(HttpStatusCode.OK, result);
+            return _dictionaryService.UpdateWord(id, newWord);
+            
         }
 
         /// <summary>
@@ -113,10 +96,9 @@ namespace LinguoCardService.Controllers
         [HttpDelete]
         [Route("Dictionary/Delete/{id}")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Word and translation was successfully delete")]
-        public IHttpActionResult DeleteWordById(int id)
+        public bool DeleteWordById(int id)
         {
-            var result = _dictionaryService.DeleteWord(id);
-            return Content(HttpStatusCode.OK, result);
+            return _dictionaryService.DeleteWord(id);
         }
 
     }

@@ -12,8 +12,8 @@ namespace LinguoCardServiceTests.Repositories
             var expected = new WordDictionary
             {
                 Id = 1,
-                Original = "Car",
-                Translate = "Машина"
+                EnglishValue = "Car",
+                RussianValue = "Машина"
             };
 
             return expected;
@@ -28,7 +28,7 @@ namespace LinguoCardServiceTests.Repositories
 
             var result = repository.GetByOriginalWord(original);
 
-            if(expected.Id==result.Id && expected.Original==result.Original&&expected.Translate==result.Translate) Assert.IsTrue(true);
+            if(expected.Id==result.Id && expected.EnglishValue==result.EnglishValue&&expected.RussianValue==result.RussianValue) Assert.IsTrue(true);
             else
             {
                 Assert.IsFalse(true);
@@ -45,7 +45,7 @@ namespace LinguoCardServiceTests.Repositories
 
             var result = repository.GetById(id);
 
-            if (expected.Id == result.Id && expected.Original == result.Original && expected.Translate == result.Translate) Assert.IsTrue(true);
+            if (expected.Id == result.Id && expected.EnglishValue == result.EnglishValue && expected.RussianValue == result.RussianValue) Assert.IsTrue(true);
             else
             {
                 Assert.IsFalse(true);
@@ -61,7 +61,7 @@ namespace LinguoCardServiceTests.Repositories
 
             var result = repository.GetByTranslateWord(translate);
 
-            if (expected.Id == result.Id && expected.Original == result.Original && expected.Translate == result.Translate) Assert.IsTrue(true);
+            if (expected.Id == result.Id && expected.EnglishValue == result.EnglishValue && expected.RussianValue == result.RussianValue) Assert.IsTrue(true);
             else
             {
                 Assert.IsFalse(true);

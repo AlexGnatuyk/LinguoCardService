@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CardGoupsService.cs" />
     <Compile Include="Services\DictionaryService.cs" />
+    <Compile Include="Services\QuizService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LinguoCardService.DataContracts\LinguoCardService.DataContracts.csproj">
