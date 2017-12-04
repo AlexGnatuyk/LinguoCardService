@@ -36,5 +36,27 @@ namespace LinguoCardService.Controllers
         {
             return _service.GetGroup(id);
         }
+
+        /// <summary>
+        /// Get a list of avialable cards
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("CardGroups/AllList")]
+        public List<int> GetCardsList()
+        {
+            return _service.GetListOfcards();
+        }
+
+        /// <summary>
+        /// Add new goup of cards, or add card in other group
+        /// </summary>
+        /// <param name="mainId"></param>
+        /// <param name="additionalId"></param>
+        /// <returns></returns>
+        public bool AddGroup(int mainId, int additionalId)
+        {
+            return _service.AddGroup(mainId, additionalId);
+        }
     }
 }

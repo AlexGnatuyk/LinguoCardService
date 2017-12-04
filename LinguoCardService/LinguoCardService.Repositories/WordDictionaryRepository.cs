@@ -35,7 +35,6 @@ namespace LinguoCardService.Repositories
             throw new ArgumentException();
         }
 
-        // TODO Change id (now id of word, but must be id of Dictionary)
         public WordDictionary GetByOriginalWord(string original)
         {
             var responseObject = new WordDictionary();

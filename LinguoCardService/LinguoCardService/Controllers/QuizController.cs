@@ -25,7 +25,7 @@ namespace LinguoCardService.Controllers
             _service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
-       /// <summary>
+        /// <summary>
         /// Check choosen values
         /// </summary>
         /// <param name="dictionaryId">Id of card</param>

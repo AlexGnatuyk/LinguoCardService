@@ -43,7 +43,36 @@ namespace LinguoCardService.Repositories
 
         public bool AddGroup(int mainId, int additionalId)
         {
-            throw new System.NotImplementedException();
+            var request =
+                $"INSERT INTO [dbo].[CardGroups] ([Main_Card],[Additional_Card]) VALUES({mainId},{additionalId})";
+            using (var connection = Connection)
+            {
+                connection.Open();
+                var commande = new SqlCommand(request,connection);
+                var response = commande.ExecuteNonQuery();
+                if (response > 0) return true;
+            }
+            return false;
+        }
+
+        public List<int> GetListOfCards()
+        {
+            List<int> cardsId = new List<int>();
+            var request = $"SELECT distinct CardGroups.Main_Card as id FROM CardGroups";
+
+            using (var connection = Connection)
+            {
+                connection.Open();
+                var commande = new SqlCommand(request, connection);
+                var response = commande.ExecuteReader();
+                if (!response.HasRows) throw new ArgumentException();
+                while (response.Read())
+                {
+                    cardsId.Add((int)response["id"]);
+                }
+                return cardsId;
+            }
+            throw new ArgumentException();
         }
 
         public List<int> GetListOfAdditionalCards(int mainId)

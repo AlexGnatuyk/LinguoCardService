@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using LinguoCardService.DataContracts.Models;
 using LinguoCardService.Domain.Abstractions;
 
@@ -16,6 +17,16 @@ namespace LinguoCardService.Services.Services
         public CardGroup GetGroup(int id)
         {
             return _repository.GetGroup(id);
+        }
+
+        public List<int> GetListOfcards()
+        {
+            return _repository.GetListOfCards();
+        }
+
+        public bool AddGroup(int mainId, int additioanlId)
+        {
+            return _repository.AddGroup(mainId, additioanlId);
         }
     }
 }
