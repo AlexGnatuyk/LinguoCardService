@@ -28,5 +28,10 @@ namespace LinguoCardService.Services.Services
         {
             return _repository.AddGroup(mainId, additioanlId);
         }
+
+        public bool DeleteGroupOfCards(int mainId)
+        {
+            return _repository.DeleteGroupOfCard(mainId);
+        }
     }
 }

@@ -75,6 +75,20 @@ namespace LinguoCardService.Repositories
             throw new ArgumentException();
         }
 
+        public bool DeleteGroupOfCard(int mainId)
+        {
+            var request = $"DELETE FROM [dbo].[CardGroups] WHERE Main_Card = {mainId}";
+
+            using (var connection = Connection)
+            {
+                connection.Open();
+                var commande = new SqlCommand(request, connection);
+                var response = commande.ExecuteNonQuery();
+                if (response > 0) return true;
+            }
+            return false;
+        }
+
         public List<int> GetListOfAdditionalCards(int mainId)
         {
             List<int> cardsId = new List<int>();

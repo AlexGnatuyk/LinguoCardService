@@ -8,5 +8,6 @@ namespace LinguoCardService.Domain.Abstractions
         CardGroup GetGroup(int id);
         bool AddGroup(int mainId, int additionalId);
         List<int> GetListOfCards();
+        bool DeleteGroupOfCard(int mainId);
     }
 }

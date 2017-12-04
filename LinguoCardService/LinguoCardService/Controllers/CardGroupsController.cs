@@ -54,9 +54,22 @@ namespace LinguoCardService.Controllers
         /// <param name="mainId"></param>
         /// <param name="additionalId"></param>
         /// <returns></returns>
+        [HttpPost]
+        [Route("CardGroups/Add")]
         public bool AddGroup(int mainId, int additionalId)
         {
             return _service.AddGroup(mainId, additionalId);
         }
+
+        /// <summary>
+        /// Delete goup of cards
+        /// </summary>
+        /// <param name="mainId">Id of main card in group (id of group)</param>
+        /// <returns></returns>
+        public bool DeleteGroupOfCards(int mainId)
+        {
+            return _service.DeleteGroupOfCards(mainId);
+        }
+
     }
 }
