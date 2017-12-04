@@ -25,6 +25,7 @@ namespace LinguoCardService.DependencyInjection
             builder.RegisterType<CardsService>().As<ICardsService>();
             builder.RegisterType<CardGroupsRepository>().As<ICardGroupsRepository>();
             builder.RegisterType<CardGoupsService>().As<ICardGroupsService>();
+            builder.RegisterType<QuizService>().As<IQuizService>();
 
             return builder;
         }

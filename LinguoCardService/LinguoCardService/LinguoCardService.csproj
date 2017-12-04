@@ -251,6 +251,7 @@
     <Compile Include="Controllers\CardGroupsController.cs" />
     <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
+    <Compile Include="Controllers\QuizController.cs" />
     <Compile Include="DependencyInjection\WebApiExtentions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
