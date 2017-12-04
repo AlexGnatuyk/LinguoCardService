@@ -50,7 +50,7 @@ namespace LinguoCardService.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("Dictionary/translate/{word}")]
-        public WordDictionary GetTranslateByWord(string word, Language language = Language.Eng)
+        public WordDictionary GetTranslateByWord(string word, Language language = Language.En)
         {
             if (language.ToString() == "Ru") return _dictionaryService.GetByTranslateWord(word);
             return _dictionaryService.GetByOriginallWord(word);

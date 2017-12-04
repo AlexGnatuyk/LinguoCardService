@@ -12,6 +12,7 @@ namespace LinguoCardService.Controllers
     /// <summary>
     /// Card Groups Controller
     /// </summary>
+    [RoutePrefix(WebApiConfig.RoutePrefix)]
     public class CardGroupsController : ApiController
     {
         private readonly ICardGroupsService _service;

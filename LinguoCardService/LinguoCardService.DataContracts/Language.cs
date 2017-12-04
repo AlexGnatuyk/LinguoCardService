@@ -8,7 +8,7 @@
         /// <summary>
         /// English language
         /// </summary>
-        Eng = 0,
+        En = 0,
         /// <summary>
         /// Russian language
         /// </summary>

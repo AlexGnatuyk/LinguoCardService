@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService", "LinguoCardService\LinguoCardService.csproj", "{82D12696-CA30-4624-AA91-BD4F1BAFC386}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.Repositories", "LinguoCardService.Repositories\LinguoCardService.Repositories.csproj", "{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.RepositoriesTests", "LinguoCardService.RepositoriesTests\LinguoCardService.RepositoriesTests.csproj", "{FFAA6633-BDAC-40A8-B477-FB01DB566C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinguoCardService.ServicesTests", "LinguoCardService.ServicesTests\LinguoCardService.ServicesTests.csproj", "{C1BEF6EC-1771-4CA7-8D70-5B687927D189}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{FFAA6633-BDAC-40A8-B477-FB01DB566C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFAA6633-BDAC-40A8-B477-FB01DB566C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFAA6633-BDAC-40A8-B477-FB01DB566C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BEF6EC-1771-4CA7-8D70-5B687927D189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BEF6EC-1771-4CA7-8D70-5B687927D189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BEF6EC-1771-4CA7-8D70-5B687927D189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BEF6EC-1771-4CA7-8D70-5B687927D189}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

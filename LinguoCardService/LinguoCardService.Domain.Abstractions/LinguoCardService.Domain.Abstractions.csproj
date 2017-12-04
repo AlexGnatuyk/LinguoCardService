@@ -45,6 +45,7 @@
     <Compile Include="IDictionaryService.cs" />
     <Compile Include="IQuizService.cs" />
     <Compile Include="IWordDictionaryRepository.cs" />
+    <Compile Include="IYandexTranslateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -248,7 +248,7 @@ namespace LinguoCardService.Repositories
         public Language CheckRuOrEngWord(int id)
         {
             var request = $"select Words.language as language from Words where Words.id = @id";
-            Language language = Language.Eng;
+            Language language = Language.En;
 
             using (var conection = Connection)
             {
