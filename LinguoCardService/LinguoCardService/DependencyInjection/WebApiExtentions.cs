@@ -41,6 +41,7 @@ namespace LinguoCardService.DependencyInjection
             builder.RegisterType<QuizService>().As<IQuizService>();
             builder.RegisterType<YandexTranslateService>().As<IYandexTranslateService>();
             builder.RegisterType<GroupFacade>().As<IGroupFacade>();
+            
 
             return builder;
         }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using LinguoCardService.DataContracts.Models;
 
 namespace LinguoCardService.Domain.Abstractions
 {

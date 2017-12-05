@@ -5,10 +5,20 @@ using LinguoCardService.DependencyInjection;
 
 namespace LinguoCardService
 {
+    /// <summary>
+    /// Autifac config
+    /// </summary>
     public class AutofacWebapiConfig
     {
+        /// <summary>
+        /// IoC
+        /// </summary>
         public static IContainer Container;
 
+        /// <summary>
+        /// Register dependency
+        /// </summary>
+        /// <param name="config"></param>
         public static void SetDependencyResolver(HttpConfiguration config)
         {
             config.DependencyResolver = new AutofacWebApiDependencyResolver(
