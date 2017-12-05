@@ -106,3 +106,7 @@
 2017-12-05 23:33:36.9674|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word шляпа was requested 
 2017-12-05 23:34:02.8745|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Пряники через Yandex Translate
 2017-12-05 23:34:02.8745|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Пряники через Yandex Translate
+2017-12-05 23:41:46.3623|INFO|LinguoCardService|[DictionaryController] The dictionary with id 6 was requested 
+2017-12-05 23:41:46.3858|INFO|LinguoCardService|[DictionaryService] The dictionary with id 6 was requested 
+2017-12-05 23:42:04.5016|INFO|LinguoCardService|[DictionaryController] The dictionary with word Шляпа was requested 
+2017-12-05 23:42:04.5071|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Шляпа was requested 

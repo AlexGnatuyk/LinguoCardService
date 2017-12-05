@@ -51,7 +51,7 @@ namespace LinguoCardService.Repositories
         {
             var responseObject = new WordDictionary();
             var request =
-                $"select Words.id as id, Words.value as value  from Words, (select Words.id as id from Words where Words.value = @original) t1,Dictionary where Dictionary.english_id = t1.id and Dictionary.russian_id = Words.id";
+                $"select Dictionary.id as id, Words.value as value  from Words, (select Words.id as id from Words where Words.value = @original) t1,Dictionary where Dictionary.english_id = t1.id and Dictionary.russian_id = Words.id";
             using (var connection = Connection)
             {
                 connection.Open();
@@ -77,7 +77,7 @@ namespace LinguoCardService.Repositories
         public WordDictionary GetByTranslateWord(string translate)
         {
             
-            var request = $"select Words.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = @translate) t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
+            var request = $"select Dictionary.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = @translate) t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
             using (var connection = Connection)
             {
                 var responseObject = new WordDictionary();
