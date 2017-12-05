@@ -1,0 +1,25 @@
+2017-12-05 10:37:41.3109|INFO|LinguoCardService|Был запросшен перевод слова Картошка через Yandex Translate
+2017-12-05 10:38:01.4064|INFO|LinguoCardService|Был запросшен перевод слова Table через Yandex Translate
+2017-12-05 10:38:09.1852|INFO|LinguoCardService|Был запросшен перевод слова Love через Yandex Translate
+2017-12-05 12:09:18.0009|INFO|LinguoCardService|[DictionaryController] The dictionary with id 1 was requested 
+2017-12-05 12:09:18.0269|INFO|LinguoCardService|[DictionaryService] The dictionary with id 1 was requested 
+2017-12-05 12:09:22.5517|INFO|LinguoCardService|[DictionaryController] The dictionary with id 26 was requested 
+2017-12-05 12:09:22.5577|INFO|LinguoCardService|[DictionaryService] The dictionary with id 26 was requested 
+2017-12-05 12:09:22.5577|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 26
+2017-12-05 12:09:55.1995|INFO|LinguoCardService|[DictionaryController] The dictionary with word Мама was requested 
+2017-12-05 12:09:55.1995|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word Мама was requested 
+2017-12-05 12:09:55.2155|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by original word] Response is Empty 
+2017-12-05 12:10:01.5670|INFO|LinguoCardService|[DictionaryController] The dictionary with word Мама was requested 
+2017-12-05 12:10:01.5720|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Мама was requested 
+2017-12-05 12:10:01.5720|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by translate word] Response is Empty 
+2017-12-05 12:10:29.0590|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова мама через Yandex Translate
+2017-12-05 12:10:29.0590|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова мама через Yandex Translate
+2017-12-05 12:10:34.1910|INFO|LinguoCardService|[DictionaryController] The dictionary with word Мама was requested 
+2017-12-05 12:10:34.1960|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Мама was requested 
+2017-12-05 12:10:52.1214|INFO|LinguoCardService|[CardGroupsController] The list of cards was requested
+2017-12-05 12:10:52.1214|INFO|LinguoCardService|[CardGoupsService] The list of cards was requested
+2017-12-05 12:10:59.3037|INFO|LinguoCardService|[CardGroupsController] The group of words with id = 3 was requestet 
+2017-12-05 12:10:59.3087|INFO|LinguoCardService|[CardGoupsService] The group of words with id = 3 was requestet 
+2017-12-05 12:10:59.3087|INFO|LinguoCardService|[GroupFacade] The group of words with id = 3 was requestet 
+2017-12-05 12:11:13.1447|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 4 and word кот was requested 
+2017-12-05 12:11:13.1507|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 4 and word кот was requested 

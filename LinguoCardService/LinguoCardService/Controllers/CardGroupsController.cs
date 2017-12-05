@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using LinguoCardService.DataContracts.Models;
 using LinguoCardService.Domain.Abstractions;
+using NLog;
 
 namespace LinguoCardService.Controllers
 {
@@ -16,13 +17,16 @@ namespace LinguoCardService.Controllers
     public class CardGroupsController : ApiController
     {
         private readonly ICardGroupsService _service;
+        private readonly ILogger _logger;
 
         /// <summary>
         /// Controller constructor
         /// </summary>
         /// <param name="service"></param>
-        public CardGroupsController(ICardGroupsService service)
+        /// <param name="logger"></param>
+        public CardGroupsController(ICardGroupsService service, ILogger logger)
         {
+            _logger = logger;
             _service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
@@ -35,6 +39,7 @@ namespace LinguoCardService.Controllers
         [Route("CardGroups/")]
         public CardGroup GetGroupById(int id)
         {
+            _logger.Info($"[CardGroupsController] The group of words with id = {id} was requestet ");
             return _service.GetGroup(id);
         }
 
@@ -46,6 +51,7 @@ namespace LinguoCardService.Controllers
         [Route("CardGroups/AllList")]
         public List<int> GetCardsList()
         {
+            _logger.Info($"[CardGroupsController] The list of cards was requested");
             return _service.GetListOfcards();
         }
 
@@ -59,6 +65,7 @@ namespace LinguoCardService.Controllers
         [Route("CardGroups/Add")]
         public bool AddGroup(int mainId, int additionalId)
         {
+            _logger.Info($"[CardGroupsController] Goup with mainId {mainId} and additionalId {additionalId} was added");
             return _service.AddGroup(mainId, additionalId);
         }
 
@@ -67,8 +74,11 @@ namespace LinguoCardService.Controllers
         /// </summary>
         /// <param name="mainId">Id of main card in group (id of group)</param>
         /// <returns></returns>
+        [HttpDelete]
+        [Route("CardGroups/Delete")]
         public bool DeleteGroupOfCards(int mainId)
         {
+            _logger.Info($"[CardGroupsController] The group with mainId {mainId} was deleted ");
             return _service.DeleteGroupOfCards(mainId);
         }
 

@@ -6,20 +6,24 @@ using System.Text;
 using LinguoCardService.DataContracts;
 using LinguoCardService.Domain.Abstractions;
 using Newtonsoft.Json.Linq;
+using NLog;
 
 namespace LinguoCardService.Services.Services
 {
     public class YandexTranslateService : IYandexTranslateService
     {
         private readonly IWordDictionaryRepository _repository;
+        private readonly ILogger _logger;
 
-        public YandexTranslateService(IWordDictionaryRepository repository)
+        public YandexTranslateService(IWordDictionaryRepository repository, ILogger logger)
         {
+            _logger = logger;
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         public string GetTranslate(string original, Language language)
         {
+            _logger.Info($"[YandexTranslateService] Был запросшен перевод слова {original} через Yandex Translate");
             var url = $"https://translate.yandex.net/api/v1.5/tr.json/translate";
             var apiKey = $"trnsl.1.1.20171204T105508Z.73de18b158ee992c.0732ee1e959ed65fefe5f904d935b7401fb2b0dc";
 

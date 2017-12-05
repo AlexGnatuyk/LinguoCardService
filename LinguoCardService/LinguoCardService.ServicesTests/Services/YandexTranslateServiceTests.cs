@@ -1,13 +1,8 @@
-﻿using NUnit.Framework;
+﻿using LinguoCardService.DataContracts;
 using LinguoCardService.Services.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LinguoCardService.DataContracts;
+using NUnit.Framework;
 
-namespace LinguoCardService.Services.Services.Tests
+namespace LinguoCardService.ServicesTests.Services
 {
     [TestFixture()]
     public class YandexTranslateServiceTests

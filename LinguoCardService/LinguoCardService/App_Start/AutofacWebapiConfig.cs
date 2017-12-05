@@ -21,6 +21,7 @@ namespace LinguoCardService
 
             builder.RegisterHttpServices();
             builder.RegisterDomainServices();
+            builder.RegisterLoggingServices();
             
             return builder.Build();
         }
