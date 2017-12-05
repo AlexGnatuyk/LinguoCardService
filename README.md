@@ -9,6 +9,6 @@ Uses:
  * __swagger__
 
 ## Run
-To run this project you should dowload solutioin and just run it!
+To run this project you should dowload solutioin, edit connection strings, run scripts for database.
 
 Enjoy :)
