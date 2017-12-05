@@ -15,6 +15,12 @@ namespace LinguoCardService.Services.Services
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
+        /// <summary>
+        /// Checking answers
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        /// <param name="chosenValue"></param>
+        /// <returns></returns>
         public bool CheckQuiz(int dictionaryId, string chosenValue)
         {
             _logger.Info($"[QuizService] Checking of  dictionary with id {dictionaryId} and word {chosenValue} was requested ");

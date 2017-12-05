@@ -110,3 +110,10 @@
 2017-12-05 23:41:46.3858|INFO|LinguoCardService|[DictionaryService] The dictionary with id 6 was requested 
 2017-12-05 23:42:04.5016|INFO|LinguoCardService|[DictionaryController] The dictionary with word Ўл€па was requested 
 2017-12-05 23:42:04.5071|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Ўл€па was requested 
+2017-12-06 00:05:41.4045|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was requested 
+2017-12-06 00:05:41.4316|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was requested 
+2017-12-06 00:05:53.3192|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was deleted 
+2017-12-06 00:05:53.3192|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was deleted 
+2017-12-06 00:05:58.1173|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was requested 
+2017-12-06 00:05:58.1173|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was requested 
+2017-12-06 00:05:58.1493|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 23

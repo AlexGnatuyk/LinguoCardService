@@ -97,7 +97,7 @@ namespace LinguoCardService.Controllers
         /// <summary>
         /// Delete Word and translation by id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Id of dictionary</param>
         /// <returns></returns>
         [HttpDelete]
         [Route("Dictionary/Delete/{id}")]
@@ -107,6 +107,5 @@ namespace LinguoCardService.Controllers
             _logger.Info($"[DictionaryController] The dictionary with id {id} was deleted ");
             return _dictionaryService.DeleteWord(id);
         }
-
     }
 }
