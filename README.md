@@ -15,3 +15,5 @@ Uses:
 To run this project you should dowload solutioin, edit connection strings, run scripts for database.
 
 Enjoy :)
+
+Original repository: https://github.com/AlexGnatuyk/LinguoCardService
