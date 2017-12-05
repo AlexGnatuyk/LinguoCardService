@@ -34,7 +34,7 @@ namespace LinguoCardService.Controllers
         /// Get a translation from Yandex Translate
         /// </summary>
         /// <param name="original">Word which is would be translate</param>
-        /// <param name="language">Switch destination of translate(ru or en)</param>
+        /// <param name="language">Switch destination of translate(en - 0 or ru - 1)</param>
         /// <returns></returns>
         [HttpGet]
         [Route("YandexTranslate/Translate")]

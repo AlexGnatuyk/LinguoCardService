@@ -196,25 +196,25 @@ namespace LinguoCardService.Repositories
             }
         }
 
-        public WordDictionary UpdateWord(int id, string newValue)
+        public bool UpdateWord(string oldValue, string newValue)
         {
-            var request = $"UPDATE [dbo].[Words] SET[value] = @newValue WHERE Words.id = @id";
+            var request = $"UPDATE [dbo].[Words] SET[value] = @newValue WHERE Words.value = @oldValue";
             using (var connection = Connection)
             {
                 connection.Open();
                 var command = new SqlCommand(request, connection);
                 command.Parameters.AddWithValue("@newValue", newValue);
-                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@oldValue", oldValue);
                 var flag = command.ExecuteNonQuery();
                 if (flag == 0)
                 {
-                    _logger.Error($"[WordDictionaryRepository] Cant update word with id {id}");
-                    throw new ArgumentException($"Cant update word with id {id}");
+                    _logger.Error($"[WordDictionaryRepository] Cant update word with word {oldValue}");
+                    throw new ArgumentException($"Cant update word with word {oldValue}");
                 }
             }
 
             var repo  = new WordDictionaryRepository(_logger);
-            return repo.GetById(id);
+            return true;
         }
 
         public bool DeleteWord(int id)

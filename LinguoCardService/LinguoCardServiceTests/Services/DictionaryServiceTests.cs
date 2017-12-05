@@ -43,8 +43,8 @@ namespace LinguoCardServiceTests.Services
                 .Setup(a => a.DeleteWord(1))
                 .Returns(true);
             _mockDictionaryRepo
-                .Setup(a => a.UpdateWord(1,"Car"))
-                .Returns(_expectedDictionary);
+                .Setup(a => a.UpdateWord("car","Car"))
+                .Returns(true);
 
             _service = new DictionaryService(_mockDictionaryRepo.Object,_mockLogger.Object);
         }
@@ -92,10 +92,10 @@ namespace LinguoCardServiceTests.Services
         public void UpdateWords_AllIsOk()
         {
             //Act
-            var result = _service.UpdateWord(1,"Car");
+            var result = _service.UpdateWord("car","Car");
 
             //Assert
-            Assert.AreEqual(_expectedDictionary,result);
+            Assert.IsTrue(result);
         }
     }
 }
