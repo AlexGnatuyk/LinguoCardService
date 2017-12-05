@@ -65,8 +65,8 @@ namespace LinguoCardService.Controllers
         /// <summary>
         /// Add you own word and translation in dictionary
         /// </summary>
-        /// <param name="original"></param>
-        /// <param name="translate"></param>
+        /// <param name="original">Word in English</param>
+        /// <param name="translate">Word in Russian</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Dictionaty/AddWord/{original}-{translate}")]
@@ -82,24 +82,22 @@ namespace LinguoCardService.Controllers
         /// <summary>
         /// Update Word in dictionary
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="newWord"></param>
+        /// <param name="oldValue">Old value</param>
+        /// <param name="newWord"> New Value</param>
         /// <returns></returns>
         [HttpPut]
-        [Route("Dictionary/Update/{id}-{newWord}")]
-        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
-            Description = "Word was added in dictionary")]
-        public WordDictionary UpdateWordInDictionary(int id, string newWord)
+        [Route("Dictionary/UpdateWord")]
+        public bool UpdateWordInDictionary(string oldValue, string newWord)
         {
-            _logger.Info($"[DictionaryController] The word with id {id} was updated on {newWord} ");
-            return _dictionaryService.UpdateWord(id, newWord);
+            _logger.Info($"[DictionaryController] The word with old value {oldValue} was updated on {newWord} ");
+            return _dictionaryService.UpdateWord(oldValue, newWord);
             
         }
 
         /// <summary>
         /// Delete Word and translation by id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Id of dictionary</param>
         /// <returns></returns>
         [HttpDelete]
         [Route("Dictionary/Delete/{id}")]
@@ -109,6 +107,5 @@ namespace LinguoCardService.Controllers
             _logger.Info($"[DictionaryController] The dictionary with id {id} was deleted ");
             return _dictionaryService.DeleteWord(id);
         }
-
     }
 }

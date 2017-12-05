@@ -33,7 +33,7 @@ namespace LinguoCardService.Controllers
         /// <summary>
         /// Get a groups of card by id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Id of cards</param>
         /// <returns></returns>
         [HttpGet]
         [Route("CardGroups/")]
@@ -58,8 +58,8 @@ namespace LinguoCardService.Controllers
         /// <summary>
         /// Add new goup of cards, or add card in other group
         /// </summary>
-        /// <param name="mainId"></param>
-        /// <param name="additionalId"></param>
+        /// <param name="mainId">Id of main card (dictionary)</param>
+        /// <param name="additionalId">Id of additioanl cards</param>
         /// <returns></returns>
         [HttpPost]
         [Route("CardGroups/Add")]

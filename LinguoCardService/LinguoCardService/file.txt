@@ -23,3 +23,97 @@
 2017-12-05 12:10:59.3087|INFO|LinguoCardService|[GroupFacade] The group of words with id = 3 was requestet 
 2017-12-05 12:11:13.1447|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 4 and word кот was requested 
 2017-12-05 12:11:13.1507|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 4 and word кот was requested 
+2017-12-05 22:59:46.6214|INFO|LinguoCardService|[DictionaryController] The dictionary with id 25 was requested 
+2017-12-05 22:59:46.6504|INFO|LinguoCardService|[DictionaryService] The dictionary with id 25 was requested 
+2017-12-05 22:59:46.9966|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 25
+2017-12-05 23:00:50.3889|INFO|LinguoCardService|[DictionaryController] The dictionary with id 20 was requested 
+2017-12-05 23:00:50.3889|INFO|LinguoCardService|[DictionaryService] The dictionary with id 20 was requested 
+2017-12-05 23:01:40.3517|INFO|LinguoCardService|[DictionaryController] The dictionary with word Таблица was requested 
+2017-12-05 23:01:40.3517|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Таблица was requested 
+2017-12-05 23:02:07.5858|INFO|LinguoCardService|[DictionaryController] The dictionary with original: Laptop and translate: Ноутбук was added 
+2017-12-05 23:02:07.5858|INFO|LinguoCardService|[DictionaryService] The dictionary with original: Laptop and translate: Ноутбук was added 
+2017-12-05 23:16:22.5319|INFO|LinguoCardService|[DictionaryController] The word with old value Table was updated on табуретка 
+2017-12-05 23:16:22.5579|INFO|LinguoCardService|[DictionaryService] The word with old value Table was updated on табуретка 
+2017-12-05 23:19:04.3033|INFO|LinguoCardService|[DictionaryController] The word with old value Table was updated on табуретка 
+2017-12-05 23:19:04.3293|INFO|LinguoCardService|[DictionaryService] The word with old value Table was updated on табуретка 
+2017-12-05 23:19:12.1735|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was requested 
+2017-12-05 23:19:12.1825|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was requested 
+2017-12-05 23:19:20.3868|INFO|LinguoCardService|[DictionaryController] The dictionary with id 24 was requested 
+2017-12-05 23:19:20.3868|INFO|LinguoCardService|[DictionaryService] The dictionary with id 24 was requested 
+2017-12-05 23:19:20.4158|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 24
+2017-12-05 23:19:41.0156|INFO|LinguoCardService|[DictionaryController] The dictionary with word Табуретка was requested 
+2017-12-05 23:19:41.0156|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word Табуретка was requested 
+2017-12-05 23:20:00.2081|INFO|LinguoCardService|[DictionaryController] The word with old value табуретка was updated on Table 
+2017-12-05 23:20:00.2131|INFO|LinguoCardService|[DictionaryService] The word with old value табуретка was updated on Table 
+2017-12-05 23:23:21.5182|INFO|LinguoCardService|[DictionaryController] The dictionary with id 49 was requested 
+2017-12-05 23:23:21.5247|INFO|LinguoCardService|[DictionaryService] The dictionary with id 49 was requested 
+2017-12-05 23:23:21.5597|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 49
+2017-12-05 23:26:06.8906|INFO|LinguoCardService|[DictionaryController] The dictionary with id 20 was requested 
+2017-12-05 23:26:06.8906|INFO|LinguoCardService|[DictionaryService] The dictionary with id 20 was requested 
+2017-12-05 23:26:23.1871|INFO|LinguoCardService|[DictionaryController] The dictionary with word Table was requested 
+2017-12-05 23:26:23.1871|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word Table was requested 
+2017-12-05 23:26:32.1727|INFO|LinguoCardService|[DictionaryController] The dictionary with word Табуретка was requested 
+2017-12-05 23:26:32.1787|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word Табуретка was requested 
+2017-12-05 23:26:32.2017|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by original word] Response is Empty 
+2017-12-05 23:26:47.8995|INFO|LinguoCardService|[DictionaryController] The dictionary with word Стол was requested 
+2017-12-05 23:26:47.8995|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word Стол was requested 
+2017-12-05 23:26:47.9470|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by original word] Response is Empty 
+2017-12-05 23:27:04.2015|INFO|LinguoCardService|[DictionaryController] The dictionary with word Таблица was requested 
+2017-12-05 23:27:04.2015|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word Таблица was requested 
+2017-12-05 23:27:04.2315|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by original word] Response is Empty 
+2017-12-05 23:27:29.3660|INFO|LinguoCardService|[DictionaryController] The dictionary with word Таблица was requested 
+2017-12-05 23:27:29.3660|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word Таблица was requested 
+2017-12-05 23:27:29.3956|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by original word] Response is Empty 
+2017-12-05 23:27:37.4308|INFO|LinguoCardService|[DictionaryController] The dictionary with word Кот was requested 
+2017-12-05 23:27:37.4308|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word Кот was requested 
+2017-12-05 23:27:37.4563|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by original word] Response is Empty 
+2017-12-05 23:28:18.8968|INFO|LinguoCardService|[DictionaryController] The dictionary with word таблица was requested 
+2017-12-05 23:28:18.8968|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word таблица was requested 
+2017-12-05 23:29:33.2133|INFO|LinguoCardService|[DictionaryController] The dictionary with id 49 was deleted 
+2017-12-05 23:29:33.2133|INFO|LinguoCardService|[DictionaryService] The dictionary with id 49 was deleted 
+2017-12-05 23:29:37.5649|INFO|LinguoCardService|[DictionaryController] The dictionary with word таблица was requested 
+2017-12-05 23:29:37.5699|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word таблица was requested 
+2017-12-05 23:29:37.5884|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by translate word] Response is Empty 
+2017-12-05 23:31:21.2971|INFO|LinguoCardService|[CardGroupsController] The list of cards was requested
+2017-12-05 23:31:21.3057|INFO|LinguoCardService|[CardGoupsService] The list of cards was requested
+2017-12-05 23:31:27.9722|INFO|LinguoCardService|[CardGroupsController] The group of words with id = 1 was requestet 
+2017-12-05 23:31:27.9782|INFO|LinguoCardService|[CardGoupsService] The group of words with id = 1 was requestet 
+2017-12-05 23:31:27.9782|INFO|LinguoCardService|[GroupFacade] The group of words with id = 1 was requestet 
+2017-12-05 23:31:42.5884|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 4 and additionalId 5 was added
+2017-12-05 23:31:42.5884|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 4 and additionalId 5 was added
+2017-12-05 23:31:46.7389|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 4 and additionalId 6 was added
+2017-12-05 23:31:46.7459|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 4 and additionalId 6 was added
+2017-12-05 23:31:49.7948|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 4 and additionalId 7 was added
+2017-12-05 23:31:49.7948|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 4 and additionalId 7 was added
+2017-12-05 23:31:52.5776|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 4 and additionalId 8 was added
+2017-12-05 23:31:52.5776|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 4 and additionalId 8 was added
+2017-12-05 23:31:58.0912|INFO|LinguoCardService|[CardGroupsController] The list of cards was requested
+2017-12-05 23:31:58.0912|INFO|LinguoCardService|[CardGoupsService] The list of cards was requested
+2017-12-05 23:32:03.0997|INFO|LinguoCardService|[CardGroupsController] The group of words with id = 4 was requestet 
+2017-12-05 23:32:03.1052|INFO|LinguoCardService|[CardGoupsService] The group of words with id = 4 was requestet 
+2017-12-05 23:32:03.1052|INFO|LinguoCardService|[GroupFacade] The group of words with id = 4 was requestet 
+2017-12-05 23:32:39.3469|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 6 and word брат was requested 
+2017-12-05 23:32:39.3544|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word брат was requested 
+2017-12-05 23:32:48.1220|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 6 and word небо was requested 
+2017-12-05 23:32:48.1220|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word небо was requested 
+2017-12-05 23:32:55.7629|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 6 and word Небо was requested 
+2017-12-05 23:32:55.7629|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word Небо was requested 
+2017-12-05 23:33:18.2687|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 6 and word шляпа was requested 
+2017-12-05 23:33:18.2737|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word шляпа was requested 
+2017-12-05 23:33:30.9524|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 6 and word Шляпа was requested 
+2017-12-05 23:33:30.9524|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word Шляпа was requested 
+2017-12-05 23:33:36.9674|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 6 and word шляпа was requested 
+2017-12-05 23:33:36.9674|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word шляпа was requested 
+2017-12-05 23:34:02.8745|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Пряники через Yandex Translate
+2017-12-05 23:34:02.8745|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Пряники через Yandex Translate
+2017-12-05 23:41:46.3623|INFO|LinguoCardService|[DictionaryController] The dictionary with id 6 was requested 
+2017-12-05 23:41:46.3858|INFO|LinguoCardService|[DictionaryService] The dictionary with id 6 was requested 
+2017-12-05 23:42:04.5016|INFO|LinguoCardService|[DictionaryController] The dictionary with word Шляпа was requested 
+2017-12-05 23:42:04.5071|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Шляпа was requested 
+2017-12-06 00:05:41.4045|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was requested 
+2017-12-06 00:05:41.4316|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was requested 
+2017-12-06 00:05:53.3192|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was deleted 
+2017-12-06 00:05:53.3192|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was deleted 
+2017-12-06 00:05:58.1173|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was requested 
+2017-12-06 00:05:58.1173|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was requested 
+2017-12-06 00:05:58.1493|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 23

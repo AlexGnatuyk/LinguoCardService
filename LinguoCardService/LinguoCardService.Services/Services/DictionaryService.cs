@@ -47,10 +47,10 @@ namespace LinguoCardService.Services.Services
             return requestResult;
         }
 
-        public WordDictionary UpdateWord(int id, string newWord)
+        public bool UpdateWord(string oldValue, string newWord)
         {
-            _logger.Info($"[DictionaryService] The word with id {id} was updated on {newWord} ");
-            var resultRequest = _repository.UpdateWord(id, newWord);
+            _logger.Info($"[DictionaryService] The word with old value {oldValue} was updated on {newWord} ");
+            var resultRequest = _repository.UpdateWord(oldValue, newWord);
             return resultRequest;
         }
 

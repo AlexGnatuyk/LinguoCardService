@@ -20,8 +20,6 @@ namespace LinguoCardService.Repositories
 
         public WordDictionary GetById(int id)
         {
-            
-
             var request = $"select e.value as English_value, r.value as Russian_value from Dictionary d join Words e on e.id=d.english_id join Words r on r.id = d.russian_id where d.id =@id";
             var language = CheckRuOrEngWord(id);
             
@@ -51,7 +49,7 @@ namespace LinguoCardService.Repositories
         {
             var responseObject = new WordDictionary();
             var request =
-                $"select Words.id as id, Words.value as value  from Words, (select Words.id as id from Words where Words.value = @original) t1,Dictionary where Dictionary.english_id = t1.id and Dictionary.russian_id = Words.id";
+                $"select Dictionary.id as id, Words.value as value  from Words, (select Words.id as id from Words where Words.value = @original) t1,Dictionary where Dictionary.english_id = t1.id and Dictionary.russian_id = Words.id";
             using (var connection = Connection)
             {
                 connection.Open();
@@ -65,7 +63,6 @@ namespace LinguoCardService.Repositories
                         responseObject.Id = response["id"] as int? ?? 0;
                         responseObject.EnglishValue = original;
                         responseObject.RussianValue = response["value"] as string;
-                        ;
                     }
                     return responseObject;
                 }
@@ -77,7 +74,7 @@ namespace LinguoCardService.Repositories
         public WordDictionary GetByTranslateWord(string translate)
         {
             
-            var request = $"select Words.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = @translate) t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
+            var request = $"select Dictionary.id, Words.value  from Words,  (select Words.id as id from Words where Words.value = @translate) t1,  Dictionary where Dictionary.russian_id = t1.id and Dictionary.english_id = Words.id";
             using (var connection = Connection)
             {
                 var responseObject = new WordDictionary();
@@ -95,13 +92,9 @@ namespace LinguoCardService.Repositories
                     }
                     return responseObject;
                 }
-
                _logger.Error($"[WordDictionaryRepository]/[Get by translate word] Response is Empty ");
                 throw new ArgumentException($"Did't contatin translate for {translate}");
-                
-
             }
-            
         }
 
         public WordDictionary AddWord(string original, string translate)
@@ -110,7 +103,6 @@ namespace LinguoCardService.Repositories
                 $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES (@original, 'eng'); select scope_identity() as id;";
             var requestRusInsert =
                 $"INSERT INTO [dbo].[Words] ([value],[language]) VALUES (@translate, 'ru'); select scope_identity() as id;";
-
 
             int engId = 0;
             int rusId = 0;
@@ -196,25 +188,24 @@ namespace LinguoCardService.Repositories
             }
         }
 
-        public WordDictionary UpdateWord(int id, string newValue)
+        public bool UpdateWord(string oldValue, string newValue)
         {
-            var request = $"UPDATE [dbo].[Words] SET[value] = @newValue WHERE Words.id = @id";
+            var request = $"UPDATE [dbo].[Words] SET[value] = @newValue WHERE Words.value = @oldValue";
             using (var connection = Connection)
             {
                 connection.Open();
                 var command = new SqlCommand(request, connection);
                 command.Parameters.AddWithValue("@newValue", newValue);
-                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@oldValue", oldValue);
                 var flag = command.ExecuteNonQuery();
                 if (flag == 0)
                 {
-                    _logger.Error($"[WordDictionaryRepository] Cant update word with id {id}");
-                    throw new ArgumentException($"Cant update word with id {id}");
+                    _logger.Error($"[WordDictionaryRepository] Cant update word with word {oldValue}");
+                    throw new ArgumentException($"Cant update word with word {oldValue}");
                 }
             }
-
             var repo  = new WordDictionaryRepository(_logger);
-            return repo.GetById(id);
+            return true;
         }
 
         public bool DeleteWord(int id)
@@ -223,64 +214,45 @@ namespace LinguoCardService.Repositories
             int engId = 0;
             int ruID = 0;
 
-            if (language.ToString() == "Ru")
+            var request =
+                $"select Dictionary.english_id as EnglisID, Dictionary.russian_id as RussianId from Dictionary where Dictionary.id = @id";
+            using (var connection = Connection)
             {
-                ruID = id;
-                var request = $"select Dictionary.english_id as EnglisID from Dictionary where Dictionary.russian_id = @id";
-                using (var connection = Connection)
+                connection.Open();
+                var commande = new SqlCommand(request, connection);
+                commande.Parameters.AddWithValue("@id", id);
+                var response = commande.ExecuteReader();
+                if (response.HasRows)
                 {
-                    connection.Open();
-                    var commande = new SqlCommand(request, connection);
-                    commande.Parameters.AddWithValue("@id", id);
-                    var response = commande.ExecuteReader();
-                    if (response.HasRows)
+                    while (response.Read())
                     {
-                        while (response.Read())
-                        {
-                            engId = (int) response["EnglisID"];
-                        }
+                        engId = (int) response["EnglisID"];
+                        ruID = (int) response["RussianID"];
                     }
-                    response.Close();
-
-                    if(engId == 0) throw new ArgumentException();
-
-                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id=@ruId; DELETE FROM [dbo].[Words] WHERE Words.id=@engId";
-                    commande = new SqlCommand(request, connection);
-                    commande.Parameters.AddWithValue("@ruId", ruID);
-                    commande.Parameters.AddWithValue("@engId", engId);
-                    var flag = commande.ExecuteNonQuery();
-                    if (flag == 0) throw new ArgumentException();
-                    
                 }
-                return true;
-            }
-            if (language.ToString() == "Eng")
-            {
-                engId = id;
-                var request = $"select Dictionary.russian_id as RussianId from Dictionary where Dictionary.english_id = @id";
-                using (var connection = Connection)
+                else
                 {
-                    connection.Open();
-                    var commande = new SqlCommand(request, connection);
-                    commande.Parameters.AddWithValue("@id", id);
-                    var response = commande.ExecuteReader();
-                    if (response.HasRows)
-                    {
-                        while (response.Read())
-                        {
-                            ruID = (int) response["RussianID"];
-                        }
-                    }
-                    response.Close();
+                    _logger.Error($"Error during deleting dictionary with id {id}");
+                    throw new ArgumentException($"[WordDictionaryRepository] Error during deleting dictionary with id {id}");
+                }
+                response.Close();
 
-                    if (ruID == 0) throw new ArgumentException();
+                if (engId == 0)
+                {
+                    _logger.Error($"Error during deleting dictionary with id {id}");
+                    throw new ArgumentException($"[WordDictionaryRepository] Error during deleting dictionary with id {id}");
+                }
 
-                    request = $"DELETE FROM [dbo].[Words] WHERE Words.id=@ruId; DELETE FROM [dbo].[Words] WHERE Words.id=@engId";
-                    commande = new SqlCommand(request, connection);
-                    commande.Parameters.AddWithValue("@ruId", ruID);
-                    commande.Parameters.AddWithValue("@engId", engId);
-                    var flag = commande.ExecuteNonQuery();
-                    if (flag == 0) throw new ArgumentException();
+                request =
+                    $"DELETE FROM [dbo].[Words] WHERE Words.id=@ruId; DELETE FROM [dbo].[Words] WHERE Words.id=@engId";
+                commande = new SqlCommand(request, connection);
+                commande.Parameters.AddWithValue("@ruId", ruID);
+                commande.Parameters.AddWithValue("@engId", engId);
+                var flag = commande.ExecuteNonQuery();
+                if (flag == 0)
+                {
+                    _logger.Error($"[WordDictionaryRepository] Error during deleting dictionary with id {id}");
+                    throw new ArgumentException($"Error during deleting dictionary with id {id}");
                 }
                 return true;
             }
@@ -309,7 +281,6 @@ namespace LinguoCardService.Repositories
                 }
                 response.Close();
             }
-            
             return language;
         }
     }
