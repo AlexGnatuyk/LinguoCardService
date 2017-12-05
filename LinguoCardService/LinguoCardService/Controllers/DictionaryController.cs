@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using LinguoCardService.DataContracts;
 using LinguoCardService.Domain.Abstractions;
+using NLog;
 using Swashbuckle.Swagger.Annotations;
 
 namespace LinguoCardService.Controllers
@@ -17,13 +18,16 @@ namespace LinguoCardService.Controllers
     public class DictionaryController : ApiController
     {
         private readonly IDictionaryService _dictionaryService;
+        private readonly ILogger _logger;
 
         /// <summary>
         /// Constructor injection
         /// </summary>
         /// <param name="dictionaryServices"></param>
-        public DictionaryController(IDictionaryService dictionaryServices)
+        /// <param name="logger"></param>
+        public DictionaryController(IDictionaryService dictionaryServices, ILogger logger)
         {
+            _logger = logger;
             this._dictionaryService = dictionaryServices 
                 ?? throw new ArgumentNullException(nameof(dictionaryServices));
         }
@@ -38,6 +42,7 @@ namespace LinguoCardService.Controllers
         [Route("Dictionary/{id}")]
         public WordDictionary GetTranslateById(int id)
         {
+            _logger.Info($"[DictionaryController] The dictionary with id {id} was requested ");
             return _dictionaryService.GetById(id);
             
         }
@@ -50,8 +55,9 @@ namespace LinguoCardService.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("Dictionary/translate/{word}")]
-        public WordDictionary GetTranslateByWord(string word, Language language = Language.Eng)
+        public WordDictionary GetTranslateByWord(string word, Language language = Language.En)
         {
+            _logger.Info($"[DictionaryController] The dictionary with word {word} was requested ");
             if (language.ToString() == "Ru") return _dictionaryService.GetByTranslateWord(word);
             return _dictionaryService.GetByOriginallWord(word);
         }
@@ -68,6 +74,7 @@ namespace LinguoCardService.Controllers
             Description = "Word was added in dictionary")]
         public WordDictionary AddWordsInDictionary(string original, string translate)
         {
+            _logger.Info($"[DictionaryController] The dictionary with original: {original} and translate: {translate} was added ");
             return _dictionaryService.AddWord(original, translate);
            
         }
@@ -84,6 +91,7 @@ namespace LinguoCardService.Controllers
             Description = "Word was added in dictionary")]
         public WordDictionary UpdateWordInDictionary(int id, string newWord)
         {
+            _logger.Info($"[DictionaryController] The word with id {id} was updated on {newWord} ");
             return _dictionaryService.UpdateWord(id, newWord);
             
         }
@@ -98,6 +106,7 @@ namespace LinguoCardService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, Description = "Word and translation was successfully delete")]
         public bool DeleteWordById(int id)
         {
+            _logger.Info($"[DictionaryController] The dictionary with id {id} was deleted ");
             return _dictionaryService.DeleteWord(id);
         }
 

@@ -43,8 +43,10 @@
     <Compile Include="ICardGroupsRepository.cs" />
     <Compile Include="ICardGroupsService.cs" />
     <Compile Include="IDictionaryService.cs" />
+    <Compile Include="IGroupFacade.cs" />
     <Compile Include="IQuizService.cs" />
     <Compile Include="IWordDictionaryRepository.cs" />
+    <Compile Include="IYandexTranslateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

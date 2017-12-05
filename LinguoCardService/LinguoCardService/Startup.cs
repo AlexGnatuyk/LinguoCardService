@@ -8,8 +8,15 @@ using Owin;
 
 namespace LinguoCardService
 {
+    /// <summary>
+    /// Startup class
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Set app configuration
+        /// </summary>
+        /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
         {
             var config = new HttpConfiguration();

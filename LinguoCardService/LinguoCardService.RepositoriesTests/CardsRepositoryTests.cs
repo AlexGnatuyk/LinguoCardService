@@ -9,8 +9,7 @@ namespace LinguoCardService.RepositoriesTests
         [Test()]
         public void GetListOfCardsTest()
         {
-           CardsRepository repository  = new CardsRepository();
-            var result = repository.GetListOfCards();
+           
             Assert.IsTrue(true);
         }
     }

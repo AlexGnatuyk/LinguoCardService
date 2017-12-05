@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C62B26B2-B12B-4E10-86EF-4B955E32732D}</ProjectGuid>
+    <ProjectGuid>{C1BEF6EC-1771-4CA7-8D70-5B687927D189}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LinguoCardServiceTests</RootNamespace>
-    <AssemblyName>LinguoCardServiceTests</AssemblyName>
+    <RootNamespace>LinguoCardService.ServicesTests</RootNamespace>
+    <AssemblyName>LinguoCardService.ServicesTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,15 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq, Version=4.5.28.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.5.28\lib\net45\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -60,13 +51,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CardGoupsServiceTests.cs" />
-    <Compile Include="Services\DictionaryServiceTests.cs" />
-    <Compile Include="Services\QuizServiceTests.cs" />
     <Compile Include="Services\YandexTranslateServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -74,21 +61,9 @@
       <Project>{57DA1106-8A8C-4765-A662-EF6752C3AE8E}</Project>
       <Name>LinguoCardService.DataContracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LinguoCardService.Domain.Abstractions\LinguoCardService.Domain.Abstractions.csproj">
-      <Project>{3D0400C1-2E09-4F28-80B3-DFC2C42D7ED7}</Project>
-      <Name>LinguoCardService.Domain.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LinguoCardService.Repositories\LinguoCardService.Repositories.csproj">
-      <Project>{46C14C6D-A293-4327-BB6F-D87ED2DFD3EE}</Project>
-      <Name>LinguoCardService.Repositories</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LinguoCardService.Services\LinguoCardService.Services.csproj">
       <Project>{0BC3E93E-9846-4DB6-936D-1737F58C676B}</Project>
       <Name>LinguoCardService.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LinguoCardService\LinguoCardService.csproj">
-      <Project>{82D12696-CA30-4624-AA91-BD4F1BAFC386}</Project>
-      <Name>LinguoCardService</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

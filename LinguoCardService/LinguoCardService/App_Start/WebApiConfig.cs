@@ -6,12 +6,19 @@ using Autofac;
 
 namespace LinguoCardService
 {
+    /// <summary>
+    /// Web Api Config
+    /// </summary>
     public static class WebApiConfig
     {
         /// <summary>
         /// Route Prefix
         /// </summary>
         public const string RoutePrefix = "api";
+        /// <summary>
+        /// Register method
+        /// </summary>
+        /// <param name="config"></param>
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
