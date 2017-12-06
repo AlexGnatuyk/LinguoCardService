@@ -117,3 +117,111 @@
 2017-12-06 00:05:58.1173|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was requested 
 2017-12-06 00:05:58.1173|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was requested 
 2017-12-06 00:05:58.1493|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 23
+2017-12-06 11:03:05.0748|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Монитор через Yandex Translate
+2017-12-06 11:03:05.0988|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Монитор через Yandex Translate
+2017-12-06 11:03:15.0532|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Электрофарез через Yandex Translate
+2017-12-06 11:03:15.0532|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Электрофарез через Yandex Translate
+2017-12-06 11:03:21.8044|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Корюшка через Yandex Translate
+2017-12-06 11:03:21.8044|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Корюшка через Yandex Translate
+2017-12-06 11:03:28.4213|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Университет через Yandex Translate
+2017-12-06 11:03:28.4213|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Университет через Yandex Translate
+2017-12-06 11:03:55.3648|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Грузовик через Yandex Translate
+2017-12-06 11:03:55.3648|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Грузовик через Yandex Translate
+2017-12-06 11:04:01.1572|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Мечта через Yandex Translate
+2017-12-06 11:04:01.1572|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Мечта через Yandex Translate
+2017-12-06 11:04:15.6549|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Шорты через Yandex Translate
+2017-12-06 11:04:15.6549|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Шорты через Yandex Translate
+2017-12-06 11:04:41.5200|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова Бетон через Yandex Translate
+2017-12-06 11:04:41.5200|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова Бетон через Yandex Translate
+2017-12-06 11:05:03.6843|INFO|LinguoCardService|[YandexTranslateController] Был запросшен перевод слова поломка через Yandex Translate
+2017-12-06 11:05:03.7043|INFO|LinguoCardService|[YandexTranslateService] Был запросшен перевод слова поломка через Yandex Translate
+2017-12-06 11:05:50.4161|INFO|LinguoCardService|[DictionaryController] The dictionary with id 5 was requested 
+2017-12-06 11:05:50.4161|INFO|LinguoCardService|[DictionaryService] The dictionary with id 5 was requested 
+2017-12-06 11:06:10.7277|INFO|LinguoCardService|[DictionaryController] The dictionary with word Грезовик was requested 
+2017-12-06 11:06:10.7277|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Грезовик was requested 
+2017-12-06 11:06:10.7717|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by translate word] Response is Empty 
+2017-12-06 11:06:23.0457|INFO|LinguoCardService|[DictionaryController] The dictionary with word Грузовик was requested 
+2017-12-06 11:06:23.0457|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Грузовик was requested 
+2017-12-06 11:06:39.8544|INFO|LinguoCardService|[DictionaryController] The dictionary with original: Глина and translate: Glina was added 
+2017-12-06 11:06:39.8544|INFO|LinguoCardService|[DictionaryService] The dictionary with original: Глина and translate: Glina was added 
+2017-12-06 11:07:03.6315|INFO|LinguoCardService|[DictionaryController] The word with old value Glina was updated on newGlina 
+2017-12-06 11:07:03.6486|INFO|LinguoCardService|[DictionaryService] The word with old value Glina was updated on newGlina 
+2017-12-06 11:07:15.1653|INFO|LinguoCardService|[DictionaryController] The dictionary with word Глина was requested 
+2017-12-06 11:07:15.1653|INFO|LinguoCardService|[DictionaryService] The dictionary with RUSSIAN word Глина was requested 
+2017-12-06 11:07:15.1843|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by translate word] Response is Empty 
+2017-12-06 11:07:45.3741|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was requested 
+2017-12-06 11:07:45.3741|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was requested 
+2017-12-06 11:08:21.9354|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was deleted 
+2017-12-06 11:08:21.9674|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was deleted 
+2017-12-06 11:08:31.5839|INFO|LinguoCardService|[DictionaryController] The dictionary with id 23 was requested 
+2017-12-06 11:08:31.5839|INFO|LinguoCardService|[DictionaryService] The dictionary with id 23 was requested 
+2017-12-06 11:08:31.6169|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 23
+2017-12-06 11:08:50.6504|INFO|LinguoCardService|[CardGroupsController] The list of cards was requested
+2017-12-06 11:08:50.6674|INFO|LinguoCardService|[CardGoupsService] The list of cards was requested
+2017-12-06 11:08:59.1667|INFO|LinguoCardService|[CardGroupsController] The group of words with id = 1 was requestet 
+2017-12-06 11:08:59.1667|INFO|LinguoCardService|[CardGoupsService] The group of words with id = 1 was requestet 
+2017-12-06 11:08:59.1667|INFO|LinguoCardService|[GroupFacade] The group of words with id = 1 was requestet 
+2017-12-06 11:09:29.3998|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 6 was added
+2017-12-06 11:09:29.3998|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 6 was added
+2017-12-06 11:09:33.1586|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 7 was added
+2017-12-06 11:09:33.1586|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 7 was added
+2017-12-06 11:09:36.6620|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 8 was added
+2017-12-06 11:09:36.6620|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 8 was added
+2017-12-06 11:09:39.2065|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:09:39.2065|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:10:41.1530|INFO|LinguoCardService|[CardGroupsController] The list of cards was requested
+2017-12-06 11:10:41.1840|INFO|LinguoCardService|[CardGoupsService] The list of cards was requested
+2017-12-06 11:10:49.8156|INFO|LinguoCardService|[CardGroupsController] The group of words with id = 5 was requestet 
+2017-12-06 11:10:49.8156|INFO|LinguoCardService|[CardGoupsService] The group of words with id = 5 was requestet 
+2017-12-06 11:10:49.8156|INFO|LinguoCardService|[GroupFacade] The group of words with id = 5 was requestet 
+2017-12-06 11:12:01.4243|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 6 and word Небо was requested 
+2017-12-06 11:12:01.4243|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word Небо was requested 
+2017-12-06 11:12:07.8381|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 6 and word Шляпа was requested 
+2017-12-06 11:12:07.8381|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 6 and word Шляпа was requested 
+2017-12-06 11:49:05.4775|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:49:05.5376|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:49:05.7897|ERROR|LinguoCardService|[CardGroupsRepository] System.Collections.ListDictionaryInternal
+2017-12-06 11:50:59.5140|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:50:59.5330|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:50:59.7142|ERROR|LinguoCardService|[CardGroupsRepository] System.Collections.ListDictionaryInternal
+2017-12-06 11:51:50.4209|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:51:50.4209|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:51:50.4269|ERROR|LinguoCardService|[CardGroupsRepository] System.Collections.ListDictionaryInternal
+2017-12-06 11:52:23.1280|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:52:23.1280|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:52:23.1280|ERROR|LinguoCardService|[CardGroupsRepository] System.Collections.ListDictionaryInternal
+2017-12-06 11:53:12.3792|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:53:12.4192|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 5 and additionalId 9 was added
+2017-12-06 11:53:12.6884|ERROR|LinguoCardService|[CardGroupsRepository] Конфликт инструкции INSERT с ограничением FOREIGN KEY "FK_CardGroups_Dictionary1". Конфликт произошел в базе данных "LinguoCardsDevelop", таблица "dbo.Dictionary", column 'id'.
+Выполнение данной инструкции было прервано.
+2017-12-06 13:14:48.2829|INFO|LinguoCardService|[CardGroupsController] The group of words with id = 100 was requestet 
+2017-12-06 13:14:48.3239|INFO|LinguoCardService|[CardGoupsService] The group of words with id = 100 was requestet 
+2017-12-06 13:14:48.3329|INFO|LinguoCardService|[GroupFacade] The group of words with id = 100 was requestet 
+2017-12-06 13:14:48.6691|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 100
+2017-12-06 13:15:29.6386|INFO|LinguoCardService|[CardGroupsController] Goup with mainId 100 and additionalId 101 was added
+2017-12-06 13:15:29.6456|INFO|LinguoCardService|[CardGoupsService] Goup with mainId 100 and additionalId 101 was added
+2017-12-06 13:15:29.7197|ERROR|LinguoCardService|[CardGroupsRepository] Конфликт инструкции INSERT с ограничением FOREIGN KEY "FK_CardGroups_Dictionary". Конфликт произошел в базе данных "LinguoCardsDevelop", таблица "dbo.Dictionary", column 'id'.
+Выполнение данной инструкции было прервано.
+2017-12-06 13:16:01.5955|INFO|LinguoCardService|[CardGroupsController] The group with mainId 100 was deleted 
+2017-12-06 13:16:01.6035|INFO|LinguoCardService|[CardGoupsService] The group with mainId 100 was deleted 
+2017-12-06 13:16:01.6506|ERROR|LinguoCardService|[CardGroupsRepository] Cant't delete Group with mainId 100
+2017-12-06 13:17:30.8216|INFO|LinguoCardService|[DictionaryController] The dictionary with id 100 was requested 
+2017-12-06 13:17:30.8216|INFO|LinguoCardService|[DictionaryService] The dictionary with id 100 was requested 
+2017-12-06 13:17:30.8696|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 100
+2017-12-06 13:17:49.4171|INFO|LinguoCardService|[DictionaryController] The dictionary with word 1111 was requested 
+2017-12-06 13:17:49.4522|INFO|LinguoCardService|[DictionaryService] The dictionary with ENGLISH word 1111 was requested 
+2017-12-06 13:17:49.4742|ERROR|LinguoCardService|[WordDictionaryRepository]/[Get by original word] Response is Empty 
+2017-12-06 13:18:03.5575|INFO|LinguoCardService|[DictionaryController] The word with old value 111 was updated on 112 
+2017-12-06 13:18:03.5575|INFO|LinguoCardService|[DictionaryService] The word with old value 111 was updated on 112 
+2017-12-06 13:18:03.5945|ERROR|LinguoCardService|[WordDictionaryRepository] Cant update word with word 111
+2017-12-06 13:18:15.3397|INFO|LinguoCardService|[DictionaryController] The dictionary with id 100 was deleted 
+2017-12-06 13:18:15.3397|INFO|LinguoCardService|[DictionaryService] The dictionary with id 100 was deleted 
+2017-12-06 13:18:15.3857|ERROR|LinguoCardService|Error during deleting dictionary with id 100
+2017-12-06 13:18:28.8064|INFO|LinguoCardService|[QuizController] Checking of  dictionary with id 100 and word 0001 was requested 
+2017-12-06 13:18:28.8064|INFO|LinguoCardService|[QuizService] Checking of  dictionary with id 100 and word 0001 was requested 
+2017-12-06 13:18:28.8544|ERROR|LinguoCardService|[WordDictionaryRepository] Repo can't get dictionary by id 100
+2017-12-06 14:41:07.5039|INFO|LinguoCardService|[CardGroupsController] The list of cards was requested
+2017-12-06 14:41:07.5469|INFO|LinguoCardService|[CardGoupsService] The list of cards was requested
+2017-12-06 14:41:13.6301|INFO|LinguoCardService|[CardGroupsController] The group of words with id = 5 was requestet 
+2017-12-06 14:41:13.6301|INFO|LinguoCardService|[CardGoupsService] The group of words with id = 5 was requestet 
+2017-12-06 14:41:13.6331|INFO|LinguoCardService|[GroupFacade] The group of words with id = 5 was requestet 

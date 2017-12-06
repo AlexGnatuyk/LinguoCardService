@@ -33,13 +33,13 @@ namespace LinguoCardService.Services.Services
 
         public bool AddGroup(int mainId, int additionalId)
         {
-            _logger.Info($"[CardGoupsService] Goup with mainId {mainId} and additionalId {additionalId} was added");
+            _logger.Info($"[CardGoupsService] Goup with mainId {mainId} and additionalId {additionalId} was requestet to add");
             return _repository.AddGroup(mainId, additionalId);
         }
 
         public bool DeleteGroupOfCards(int mainId)
         {
-            _logger.Info($"[CardGoupsService] The group with mainId {mainId} was deleted ");
+            _logger.Info($"[CardGoupsService] The group with mainId {mainId} was requestet to delete ");
             return _repository.DeleteGroupOfCard(mainId);
         }
     }

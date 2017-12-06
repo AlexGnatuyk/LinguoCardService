@@ -23,7 +23,7 @@ namespace LinguoCardService.Services.Services
 
         public string GetTranslate(string original, Language language)
         {
-            _logger.Info($"[YandexTranslateService] Был запросшен перевод слова {original} через Yandex Translate");
+            _logger.Info($"[YandexTranslateService] Transslate of word: {original} was requested uses Yandex Translate");
             var url = $"https://translate.yandex.net/api/v1.5/tr.json/translate";
             var apiKey = $"trnsl.1.1.20171204T105508Z.73de18b158ee992c.0732ee1e959ed65fefe5f904d935b7401fb2b0dc";
 
