@@ -20,14 +20,26 @@ namespace LinguoCardService.Repositories
         {
             var request =
                 $"INSERT INTO [dbo].[CardGroups] ([Main_Card],[Additional_Card]) VALUES({mainId},{additionalId})";
-            using (var connection = Connection)
+            try
             {
-                connection.Open();
-                var commande = new SqlCommand(request,connection);
-                var response = commande.ExecuteNonQuery();
-                if (response > 0) return true;
+                using (var connection = Connection)
+                {
+                    connection.Open();
+                    var commande = new SqlCommand(request,connection);
+                    var response = commande.ExecuteNonQuery();
+                    if (response > 0)
+                    {
+                        _logger.Info($"[CardGroupsRepository] Group with mainId {mainId} and additional id {additionalId} was inserted");
+                        return true;
+                    }
+                }
             }
-            _logger.Error($"[CardGroupsRepository] The repository did't add the proup with mainId {mainId}, additionalId {additionalId}");
+            catch (Exception e)
+            {
+                _logger.Error($"[CardGroupsRepository] {e.Message}");
+                
+                throw new ArgumentException($"[CardGroupsRepository] The repository did't add the proup with mainId {mainId}, additionalId {additionalId}");
+            }
             return false;
         }
 
@@ -45,7 +57,7 @@ namespace LinguoCardService.Repositories
                 if (!response.HasRows)
                 {
                     _logger.Error($"[CardGroupsRepository] Repo cant get list of cards");
-                    throw new ArgumentException();
+                    throw new ArgumentException($"[CardGroupsRepository] Repo cant get list of cards");
                 }
                 while (response.Read())
                 {
@@ -64,7 +76,11 @@ namespace LinguoCardService.Repositories
                 connection.Open();
                 var commande = new SqlCommand(request, connection);
                 var response = commande.ExecuteNonQuery();
-                if (response > 0) return true;
+                if (response > 0)
+                {
+                    _logger.Info($"[CardGroupsRepository] Group with mainId {mainId} was delleted");
+                    return true;
+                }
             }
             _logger.Error($"[CardGroupsRepository] Cant't delete Group with mainId {mainId}");
             return false;

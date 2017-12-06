@@ -211,8 +211,8 @@ namespace LinguoCardService.Repositories
         public bool DeleteWord(int id)
         {
             var language = CheckRuOrEngWord(id);
-            int engId = 0;
-            int ruID = 0;
+            var engId = 0;
+            var ruId = 0;
 
             var request =
                 $"select Dictionary.english_id as EnglisID, Dictionary.russian_id as RussianId from Dictionary where Dictionary.id = @id";
@@ -227,7 +227,7 @@ namespace LinguoCardService.Repositories
                     while (response.Read())
                     {
                         engId = (int) response["EnglisID"];
-                        ruID = (int) response["RussianID"];
+                        ruId = (int) response["RussianID"];
                     }
                 }
                 else
@@ -246,7 +246,7 @@ namespace LinguoCardService.Repositories
                 request =
                     $"DELETE FROM [dbo].[Words] WHERE Words.id=@ruId; DELETE FROM [dbo].[Words] WHERE Words.id=@engId";
                 commande = new SqlCommand(request, connection);
-                commande.Parameters.AddWithValue("@ruId", ruID);
+                commande.Parameters.AddWithValue("@ruId", ruId);
                 commande.Parameters.AddWithValue("@engId", engId);
                 var flag = commande.ExecuteNonQuery();
                 if (flag == 0)
@@ -262,7 +262,7 @@ namespace LinguoCardService.Repositories
         public Language CheckRuOrEngWord(int id)
         {
             var request = $"select Words.language as language from Words where Words.id = @id";
-            Language language = Language.En;
+            var language = Language.En;
 
             using (var conection = Connection)
             {

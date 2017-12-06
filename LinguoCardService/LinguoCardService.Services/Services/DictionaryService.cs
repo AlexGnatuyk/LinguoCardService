@@ -42,21 +42,21 @@ namespace LinguoCardService.Services.Services
 
         public WordDictionary AddWord(string original, string translate)
         {
-            _logger.Info($"[DictionaryService] The dictionary with original: {original} and translate: {translate} was added ");
+            _logger.Info($"[DictionaryService] The dictionary with original: {original} and translate: {translate} was request to add ");
             var requestResult= _repository.AddWord(original,translate);
             return requestResult;
         }
 
         public bool UpdateWord(string oldValue, string newWord)
         {
-            _logger.Info($"[DictionaryService] The word with old value {oldValue} was updated on {newWord} ");
+            _logger.Info($"[DictionaryService] The word with old value {oldValue} was requested to update on {newWord} ");
             var resultRequest = _repository.UpdateWord(oldValue, newWord);
             return resultRequest;
         }
 
         public bool DeleteWord(int id)
         {
-            _logger.Info($"[DictionaryService] The dictionary with id {id} was deleted ");
+            _logger.Info($"[DictionaryService] The dictionary with id {id} was requested to delete ");
             var resultRequest = _repository.DeleteWord(id);
             return resultRequest;
         }
