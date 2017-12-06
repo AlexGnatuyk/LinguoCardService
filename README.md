@@ -7,8 +7,13 @@ Uses:
  * __WebAPI__
  * __ADO.NET__
  * __swagger__
+ * __Nunit__
+ * __YandexTranslateApi__
+ * __Nlog__
 
 ## Run
-To run this project you should dowload solutioin and just run it!
+To run this project you should dowload solutioin, edit connection strings, run scripts for database.
 
 Enjoy :)
+
+Original repository: https://github.com/AlexGnatuyk/LinguoCardService

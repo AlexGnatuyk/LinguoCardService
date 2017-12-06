@@ -39,7 +39,7 @@ namespace LinguoCardService.Controllers
         /// <param name="id">Id of word</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Dictionary/{id}")]
+        [Route("Dictionary/")]
         public WordDictionary GetTranslateById(int id)
         {
             _logger.Info($"[DictionaryController] The dictionary with id {id} was requested ");
@@ -54,7 +54,7 @@ namespace LinguoCardService.Controllers
         /// <param name="language">You should choose from which language you want translate Eng - 0, Ru - 1</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Dictionary/translate/{word}")]
+        [Route("Dictionary/translate/")]
         public WordDictionary GetTranslateByWord(string word, Language language = Language.En)
         {
             _logger.Info($"[DictionaryController] The dictionary with word {word} was requested ");
@@ -69,7 +69,7 @@ namespace LinguoCardService.Controllers
         /// <param name="translate">Word in Russian</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Dictionaty/AddWord/{original}-{translate}")]
+        [Route("Dictionaty/AddWord/")]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(WordDictionary),
             Description = "Word was added in dictionary")]
         public WordDictionary AddWordsInDictionary(string original, string translate)
@@ -100,7 +100,7 @@ namespace LinguoCardService.Controllers
         /// <param name="id">Id of dictionary</param>
         /// <returns></returns>
         [HttpDelete]
-        [Route("Dictionary/Delete/{id}")]
+        [Route("Dictionary/Delete/")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Word and translation was successfully delete")]
         public bool DeleteWordById(int id)
         {
